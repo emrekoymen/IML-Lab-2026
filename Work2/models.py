@@ -6,6 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 
 
+
 def svmAlgorithm(X_train, y_train, X_test, kernel="rbf", C=1.0):
     """Return predictions, training seconds, and prediction seconds."""
     model = SVC(kernel=kernel, C=C, gamma="scale")
