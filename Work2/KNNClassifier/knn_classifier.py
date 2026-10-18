@@ -7,6 +7,24 @@ from .voting_schemes import resolve_votes
 from .retention_policies import RetentionManager
 
 
+def k_nearest(dist_matrix, k):
+    """Indices and distances of the k nearest base rows of each query row, nearest first."""
+    n_query, n_base = dist_matrix.shape
+    k = min(k, n_base)
+    if k < n_base:
+        k_part = np.argpartition(dist_matrix, k - 1, axis=1)[:, :k]
+        rows = np.arange(n_query)[:, np.newaxis]
+        k_dists = dist_matrix[rows, k_part]
+
+        sort_order = np.argsort(k_dists, axis=1)
+        sorted_indices = np.take_along_axis(k_part, sort_order, axis=1)
+        sorted_dists = np.take_along_axis(k_dists, sort_order, axis=1)
+    else:
+        sorted_indices = np.argsort(dist_matrix, axis=1)
+        sorted_dists = np.take_along_axis(dist_matrix, sorted_indices, axis=1)
+    return sorted_indices, sorted_dists
+
+
 class KNNClassifier:
     """k-Nearest Neighbors (kNN) classifier from scratch.
 
@@ -71,23 +89,11 @@ class KNNClassifier:
     def _predict_batch(self, X_test):
         dist_matrix = compute_distance_matrix(X_test, self.X_train, metric=self.distance_metric)
         n_test = X_test.shape[0]
-        n_train = self.X_train.shape[0]
-        k = min(self.k, n_train)
 
         predictions = []
 
         # Find top k nearest neighbors per query
-        if k < n_train:
-            k_part = np.argpartition(dist_matrix, k - 1, axis=1)[:, :k]
-            rows = np.arange(n_test)[:, np.newaxis]
-            k_dists = dist_matrix[rows, k_part]
-            
-            sort_order = np.argsort(k_dists, axis=1)
-            sorted_indices = np.take_along_axis(k_part, sort_order, axis=1)
-            sorted_dists = np.take_along_axis(k_dists, sort_order, axis=1)
-        else:
-            sorted_indices = np.argsort(dist_matrix, axis=1)
-            sorted_dists = np.take_along_axis(dist_matrix, sorted_indices, axis=1)
+        sorted_indices, sorted_dists = k_nearest(dist_matrix, self.k)
 
         for i in range(n_test):
             winner = resolve_votes(
