@@ -1,0 +1,5 @@
+model,average_rank,mean_score,std_score,rank_diff_from_best,within_nemenyi_cd,within_bonferroni_cd
+never_retain,2.25,0.9411807085688964,0.008204804598446165,0.0,True,True
+always_retain,2.45,0.9409161583055903,0.008584705068311152,0.20000000000000018,True,True
+different_class,2.5,0.9409489039058005,0.008531737544155862,0.25,True,True
+oblivion_by_goodness,2.8,0.9406265672339987,0.007570370605472735,0.5499999999999998,True,True

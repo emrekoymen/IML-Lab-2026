@@ -16,8 +16,10 @@ class RetentionManager:
 
         if self.policy in ("oblivion_by_goodness", "og"):
             self.goodness = np.full(len(self.y_base), self.initial_goodness, dtype=float)
+            self.active_mask = np.ones(len(self.y_base), dtype=bool)
         else:
             self.goodness = None
+            self.active_mask = None
 
     @property
     def is_dynamic(self):
@@ -47,6 +49,8 @@ class RetentionManager:
         self.y_base = np.append(self.y_base, y)
         if self.goodness is not None:
             self.goodness = np.append(self.goodness, self.initial_goodness)
+        if self.active_mask is not None:
+            self.active_mask = np.append(self.active_mask, True)
 
     def _update_oblivion(self, true_label, retrieved_indices):
         if true_label is None:
@@ -69,3 +73,7 @@ class RetentionManager:
             self.X_base = self.X_base[keep]
             self.y_base = self.y_base[keep]
             self.goodness = self.goodness[keep]
+            if self.active_mask is not None:
+                active_positions = np.flatnonzero(self.active_mask)
+                self.active_mask[active_positions[list(to_remove)]] = False
+
