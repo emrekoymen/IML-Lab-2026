@@ -1,0 +1,2 @@
+model_a,model_b,mean_a,mean_b,mean_diff,wilcoxon_stat,p_value,significant,ttest_stat,ttest_p_value
+inverse_distance,majority,0.9409110578123723,0.9409251111947707,-1.4053382398326875e-05,27.0,1.0,False,-0.01721468093294505,0.9866409388311932

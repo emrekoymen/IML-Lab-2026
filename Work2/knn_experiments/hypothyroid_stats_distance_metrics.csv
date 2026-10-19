@@ -1,0 +1,5 @@
+model,average_rank,mean_score,std_score,rank_diff_from_best,within_nemenyi_cd,within_bonferroni_cd
+canberra,1.0,0.9641230884530133,0.010250323073504684,0.0,True,True
+manhattan,2.6,0.934166315373756,0.007460584251233853,1.6,False,False
+heom,2.85,0.9328183185555556,0.008284344248137135,1.85,False,False
+euclidean,3.55,0.9325646156319609,0.008358082846867418,2.55,False,False

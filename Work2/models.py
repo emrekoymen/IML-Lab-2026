@@ -5,6 +5,7 @@ from time import perf_counter
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 
+from KNNClassifier import kNNAlgorithm
 
 
 def svmAlgorithm(X_train, y_train, X_test, kernel="rbf", C=1.0):
