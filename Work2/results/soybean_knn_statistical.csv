@@ -1,0 +1,5 @@
+competitor_rank,mean_accuracy_difference,p_value,adjusted_p_value,significant
+2,0.0,,,False
+3,0.0,,,False
+4,0.00020407678382239336,0.9797135058357969,1.0,False
+5,0.00020407678382239336,0.9797135058357969,1.0,False
