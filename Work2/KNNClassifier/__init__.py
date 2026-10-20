@@ -1,9 +1,10 @@
-from .knn_classifier import KNNClassifier
+from .knn_classifier import KNNClassifier, kNNAlgorithm, k_nearest
 from .distance_metrics import (
     compute_distance_matrix,
     euclidean_distance,
     manhattan_distance,
     canberra_distance,
+    heom_distance,
     hamming_distance,
     DISTANCES,
 )
@@ -14,13 +15,21 @@ from .voting_schemes import (
     VOTING_SCHEMES,
 )
 from .retention_policies import RetentionManager
+from .statistical_tests import (
+    wilcoxon_test,
+    friedman_test,
+    plot_critical_difference_diagram,
+)
 
 __all__ = [
     "KNNClassifier",
+    "kNNAlgorithm",
+    "k_nearest",
     "compute_distance_matrix",
     "euclidean_distance",
     "manhattan_distance",
     "canberra_distance",
+    "heom_distance",
     "hamming_distance",
     "DISTANCES",
     "majority_voting",
@@ -28,4 +37,9 @@ __all__ = [
     "resolve_votes",
     "VOTING_SCHEMES",
     "RetentionManager",
+    "wilcoxon_test",
+    "friedman_test",
+    "plot_critical_difference_diagram",
 ]
+
+
