@@ -3,16 +3,19 @@ import numpy as np
 from KNNClassifier.voting_schemes import majority_voting
 
 
-def relative_neighbourhood_graph(D, block_size=256):
+def relative_neighbourhood_graph(D, block_size=512):
     """Boolean adjacency: i ~ j when d(i, j) <= max(d(i, k), d(j, k)) for every k."""
     n = D.shape[0]
     adjacency = np.zeros((n, n), dtype=bool)
     for i in range(n - 1):
+        d_i = D[i]
+        others = np.arange(i + 1, n)
+        # Check in blocks to bound memory
         for start in range(i + 1, n, block_size):
-            others = np.arange(start, min(start + block_size, n))
-            # k = i and k = j give d(i, j) and do not change the test
-            lune_radius = np.maximum(D[i][None, :], D[others]).min(axis=1)
-            adjacency[i, others] = D[i, others] <= lune_radius
+            end = min(start + block_size, n)
+            # D[start:end] has shape (B, n); np.maximum(d_i, D[start:end]) has shape (B, n)
+            lune_radius = np.maximum(d_i, D[start:end]).min(axis=1)
+            adjacency[i, start:end] = d_i[start:end] <= lune_radius
     return adjacency | adjacency.T
 
 

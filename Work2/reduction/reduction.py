@@ -79,4 +79,7 @@ def reduction_kNNAlgorithm(X_train, y_train, X_test, y_test=None, method="gcnn",
     predictions = model.predict(np.asarray(X_test, dtype=float), y_test)
     info["prediction_time"] = perf_counter() - start
     info["kept_indices"] = kept
+    info["n_final_stored"] = getattr(model, "n_stored_", len(kept))
+    info["final_storage"] = info["n_final_stored"] / len(y_train) if len(y_train) > 0 else 1.0
     return predictions, info
+
