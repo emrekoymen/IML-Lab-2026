@@ -1,0 +1,9 @@
+model,average_rank,mean_score,std_score,rank_diff_from_best,within_nemenyi_cd,within_bonferroni_cd
+"KNN(k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",2.0,0.6924230600008741,0.059183523819729335,0.0,True,True
+"KNN(k=3, metric=canberra, voting=inverse_distance, retention=never_retain)",2.5,0.7079269000794739,0.04996366876224511,0.5,True,True
+"KNN(k=3, metric=canberra, voting=majority, retention=different_class)",2.8,0.7172958699986338,0.04578386722285953,0.7999999999999998,True,True
+"KNN(k=5, metric=canberra, voting=inverse_distance, retention=different_class)",3.1,0.7246334899449721,0.050663379596786795,1.1,True,True
+"KNN(k=3, metric=canberra, voting=inverse_distance, retention=different_class)",4.6,0.745004770020023,0.03426376429482302,2.5999999999999996,True,True
+"KNN(k=5, metric=canberra, voting=majority, retention=always_retain)",6.2,0.8699495800305158,0.058043692488536656,4.2,False,False
+"KNN(k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",7.4,0.9232774300035089,0.07130919339481953,5.4,False,False
+"KNN(k=3, metric=canberra, voting=inverse_distance, retention=always_retain)",7.4,0.9515283900080249,0.05823989545580719,5.4,False,False

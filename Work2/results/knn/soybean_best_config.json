@@ -1,0 +1,22 @@
+{
+  "dataset": "soybean",
+  "algorithm": "KNN",
+  "criterion": "accuracy",
+  "best_model": "KNN(k=3, metric=canberra, voting=majority, retention=always_retain)",
+  "n_configurations_compared": 96,
+  "mean_accuracy": 0.9261388743316298,
+  "std_accuracy": 0.0265534378789522,
+  "mean_f1_macro": 0.0,
+  "mean_prediction_time": 0.0484253300353884,
+  "mean_prediction_time_ms": 48.425330035388406,
+  "mean_training_time": 0.0,
+  "mean_storage_pct": 100.0,
+  "friedman_chi2": 134.29575980910593,
+  "friedman_p": 0.00495904996916176,
+  "friedman_significant": true,
+  "wilcoxon_best_vs_second_p": 1.0,
+  "wilcoxon_best_vs_second_significant": false,
+  "friedman_chi2_accuracy": 134.29575980910593,
+  "friedman_p_accuracy": 0.00495904996916176,
+  "friedman_significant_accuracy": true
+}

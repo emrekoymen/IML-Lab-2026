@@ -1,3 +1,0 @@
-dataset,k,distance_metric,voting_scheme,retention_policy,accuracy,accuracy_std,f1_macro,prediction_time,peak_memory_mb
-soybean,7,manhattan,majority,different_class,0.923393894371976,0.0302794277635591,0.946668442723796,0.0142440900061046,1.918200206756592
-hypothyroid,5,canberra,inverse_distance,always_retain,0.96634302561654,0.0106457525488941,0.7612888194880101,1.4384410300001036,7.50798397064209

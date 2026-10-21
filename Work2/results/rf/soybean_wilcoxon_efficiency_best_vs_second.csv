@@ -1,0 +1,2 @@
+model_a,model_b,mean_a,mean_b,mean_diff,wilcoxon_stat,p_value,significant,ttest_stat,ttest_p_value
+"RF(n=50, crit=gini, depth=5)","RF(n=50, crit=log_loss, depth=5)",0.01158717999933281,0.01161355000222097,-2.637000288816006e-05,26.0,0.921875,False,-0.15350706369657177,0.8813852284836835

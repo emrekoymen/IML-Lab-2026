@@ -1,0 +1,9 @@
+model,average_rank,mean_score,std_score,rank_diff_from_best,within_nemenyi_cd,within_bonferroni_cd
+"SVM(kernel=poly, C=10.0, gamma=0.01, degree=2)",2.4,0.00376041999552394,0.0002684512113388699,0.0,True,True
+"SVM(kernel=poly, C=10.0, gamma=scale, degree=3)",2.5,0.0037429199932375403,0.0002248565808743487,0.10000000000000009,True,True
+"SVM(kernel=poly, C=1.0, gamma=0.1, degree=3)",2.5,0.00377619000209957,0.0002758264196606441,0.10000000000000009,True,True
+"SVM(kernel=poly, C=0.1, gamma=0.1, degree=2)",2.6,0.00395715000340711,0.0005955543307615229,0.20000000000000018,True,True
+"SVM(kernel=rbf, C=1.0, gamma=0.1)",6.5,0.00823997999832495,0.0012343865528146524,4.1,False,False
+"SVM(kernel=rbf, C=100.0, gamma=0.1)",6.5,0.00825168999726881,0.001296939471485607,4.1,False,False
+"SVM(kernel=rbf, C=10.0, gamma=0.1)",6.5,0.00841409999993625,0.0013812743100268744,4.1,False,False
+"SVM(kernel=rbf, C=1.0, gamma=scale)",6.5,0.00827969000092702,0.0013334524112837227,4.1,False,False

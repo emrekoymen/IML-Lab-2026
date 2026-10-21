@@ -1,0 +1,4 @@
+model,average_rank,mean_score,std_score,rank_diff_from_best,within_nemenyi_cd,within_bonferroni_cd
+SVM,1.75,0.9417804660525126,0.019645936263164576,0.0,True,True
+Random Forest,1.75,0.9404905297881518,0.02417561529748629,0.0,True,True
+kNN,2.5,0.923393894371976,0.03027942776355917,0.75,True,True

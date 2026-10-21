@@ -1,0 +1,22 @@
+{
+  "dataset": "soybean",
+  "algorithm": "SVM",
+  "criterion": "accuracy",
+  "best_model": "SVM(kernel=rbf, C=1.0, gamma=0.1)",
+  "n_configurations_compared": 52,
+  "mean_accuracy": 0.9417804660525126,
+  "std_accuracy": 0.0196459362631645,
+  "mean_f1_macro": 0.0,
+  "mean_prediction_time": 0.0082399799983249,
+  "mean_prediction_time_ms": 8.2399799983249,
+  "mean_training_time": 0.0,
+  "mean_storage_pct": 100.0,
+  "friedman_chi2": 346.6127783866074,
+  "friedman_p": 1.449319986587141e-45,
+  "friedman_significant": true,
+  "wilcoxon_best_vs_second_p": 0.546875,
+  "wilcoxon_best_vs_second_significant": false,
+  "friedman_chi2_accuracy": 346.6127783866074,
+  "friedman_p_accuracy": 1.449319986587141e-45,
+  "friedman_significant_accuracy": true
+}

@@ -1,3 +1,15 @@
+"""DEL (Description Length) instance reduction.
+
+Implements the DEL algorithm from:
+    D. R. Wilson and T. R. Martinez (2000). Reduction Techniques for Instance-Based
+    Learning Algorithms. Machine Learning, 38(3), 257-286.
+    DOI: https://doi.org/10.1023/A:1007626913721
+
+The MDL (Minimum Description Length) encoding cost is used to decide whether removing
+an instance shortens the total description of the training set. A noise-filter pass
+(remove misclassified instances first) is followed by a greedy removal pass ordered
+furthest-enemy-first, matching the DROP3/DEL ordering described in the paper (Sec. 5).
+"""
 import math
 
 import numpy as np

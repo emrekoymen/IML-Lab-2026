@@ -19,19 +19,22 @@ def load_arff(path):
 
 def load_fold(folder, fold):
     """Load the train and test files of one fold, e.g. hypothyroid.fold.000003.train.arff."""
-    # 1. If absolute or relative to CWD and exists, use it directly
-    if os.path.exists(folder):
-        resolved_folder = folder
-    else:
-        # 2. Check relative to parser.py's own directory (Work2/)
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        relative_to_script = os.path.join(current_dir, folder)
-        if os.path.exists(relative_to_script):
-            resolved_folder = relative_to_script
-        elif os.path.exists(os.path.join(current_dir, "Work2", folder)):
-            resolved_folder = os.path.join(current_dir, "Work2", folder)
-        else:
-            resolved_folder = folder
+    # Candidate locations to check
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    candidates = [
+        folder,
+        os.path.join("data", folder),
+        os.path.join(current_dir, folder),
+        os.path.join(current_dir, "data", folder),
+        os.path.join(current_dir, "..", "data", folder),
+        os.path.join(current_dir, "Work2", folder),
+        os.path.join(current_dir, "Work2", "data", folder),
+    ]
+    resolved_folder = folder
+    for c in candidates:
+        if os.path.exists(c):
+            resolved_folder = c
+            break
 
     name = os.path.basename(os.path.normpath(resolved_folder))
     prefix = os.path.join(resolved_folder, f"{name}.fold.{fold:06d}")

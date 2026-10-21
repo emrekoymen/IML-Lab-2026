@@ -1,0 +1,9 @@
+model,average_rank,mean_score,std_score,rank_diff_from_best,within_nemenyi_cd,within_bonferroni_cd
+"RF(n=50, crit=entropy, depth=10)",1.0,0.011729790002573239,0.0003333546917271524,0.0,True,True
+"RF(n=100, crit=entropy, depth=10)",2.5,0.021949470002436973,0.0005172566645826939,1.5,True,True
+"RF(n=100, crit=log_loss, depth=10)",2.5,0.02208055999944914,0.0004789813287237133,1.5,True,True
+"RF(n=200, crit=log_loss, depth=10)",5.0,0.0427448200032813,0.0007868172252049585,4.0,False,False
+"RF(n=200, crit=entropy, depth=10)",5.5,0.042964649997884366,0.0006479360395048093,4.5,False,False
+"RF(n=200, crit=gini, depth=10)",5.6,0.04322994000394822,0.0009024000293087075,4.6,False,False
+"RF(n=200, crit=entropy, depth=20)",6.9,0.04426968000771006,0.0017258133457019363,5.9,False,False
+"RF(n=200, crit=log_loss, depth=20)",7.0,0.04380266999069131,0.0006950156515762309,6.0,False,False

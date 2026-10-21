@@ -1,6 +1,5 @@
 """kNN Classifier implementation from scratch."""
 
-from time import perf_counter
 import numpy as np
 
 from .distance_metrics import compute_distance_matrix
@@ -121,36 +120,51 @@ class KNNClassifier:
             alpha=self.alpha,
         )
 
-        # Precompute distances from all X_test queries to the initial X_train case base
-        # and maintain an active distance row per query as cases are added or forgotten
+        # Precompute distances from all X_test queries to the initial X_train case base.
+        # For AR/DC: newly retained test points are appended and distances computed on-the-fly.
+        # For OG: X_base is never physically shrunk (soft-deletion via active_mask), so
+        #         dist_matrix column indices always align with the full X_base.
         dist_matrix = compute_distance_matrix(X_test, self.X_train, metric=self.distance_metric)
         n_test = len(X_test)
-        added_X = []
+
+        # Buffer for test points added by AR/DC policies; grows as instances are retained.
+        # Pre-allocating avoids O(n^2) vstack inside the loop.
+        added_rows = []        # list of 1-D arrays (one per added point)
+        n_added = 0
 
         predictions = []
         for i in range(n_test):
-            # Distance vector from query i to current base:
-            # base consists of surviving initial points + any newly added test points
-            if added_X:
-                x_query = X_test[i : i + 1]
-                added_arr = np.vstack(added_X)
-                dist_added = compute_distance_matrix(x_query, added_arr, metric=self.distance_metric)[0]
+            # --- Build the full distance vector for query i ---
+            # Columns 0..len(X_train)-1  → pre-computed (always valid; OG never deletes)
+            # Columns len(X_train)..     → on-the-fly for AR/DC added points
+            if n_added:
+                added_arr = np.array(added_rows)          # shape (n_added, n_features)
+                dist_added = compute_distance_matrix(
+                    X_test[i : i + 1], added_arr, metric=self.distance_metric
+                )[0]
                 dist_vec = np.concatenate([dist_matrix[i], dist_added])
             else:
                 dist_vec = dist_matrix[i]
 
+            # For OG: apply the soft-deletion mask to expose only active distances.
+            # active_mask has the same length as dist_vec (both cover the full X_base).
             if manager.active_mask is not None:
-                dist_vec = dist_vec[manager.active_mask]
-
-            k = min(self.k, manager.size)
-            if k < manager.size:
-                top_k = np.argpartition(dist_vec, k - 1)[:k]
-                sorted_k = top_k[np.argsort(dist_vec[top_k])]
+                active_dist = dist_vec[manager.active_mask]
+                active_labels = manager.y_base[manager.active_mask]
             else:
-                sorted_k = np.argsort(dist_vec)
+                active_dist = dist_vec
+                active_labels = manager.y_base
 
-            sorted_dists = dist_vec[sorted_k]
-            neighbor_labels = manager.y_base[sorted_k]
+            n_active = len(active_dist)
+            k = min(self.k, n_active)
+            if k < n_active:
+                top_k = np.argpartition(active_dist, k - 1)[:k]
+                sorted_k = top_k[np.argsort(active_dist[top_k])]
+            else:
+                sorted_k = np.argsort(active_dist)
+
+            sorted_dists = active_dist[sorted_k]
+            neighbor_labels = active_labels[sorted_k]
 
             pred_label = resolve_votes(
                 neighbor_labels=neighbor_labels,
@@ -160,59 +174,27 @@ class KNNClassifier:
             )
             predictions.append(pred_label)
 
-            # Update base online
+            # --- Update case base ---
             true_label = y_test[i] if y_test is not None else None
             prev_size = manager.size
-            manager.update(X_test[i], true_label, pred_label, sorted_k)
-            if manager.policy in ("always_retain", "ar") or (
-                manager.policy in ("different_class", "dc", "df") and manager.size > prev_size
-            ):
-                added_X.append(X_test[i : i + 1])
+
+            # For OG, retrieved_indices must refer to positions in the *full* (unmasked)
+            # X_base, not in the masked view.  Convert back via the active positions.
+            if manager.active_mask is not None:
+                active_positions = np.flatnonzero(manager.active_mask)
+                og_retrieved = active_positions[sorted_k]
+                manager.update(X_test[i], true_label, pred_label, og_retrieved)
+            else:
+                manager.update(X_test[i], true_label, pred_label, sorted_k)
+
+            # Track newly appended AR/DC points for subsequent on-the-fly distances.
+            if manager.size > prev_size:
+                added_rows.append(X_test[i])
+                n_added += 1
 
         self.n_stored_ = manager.size
-        self.storage_pct_ = (manager.size / len(self.X_train)) * 100.0 if len(self.X_train) > 0 else 100.0
+        n_initial = len(self.X_train)
+        self.storage_pct_ = (manager.size / n_initial * 100.0) if n_initial > 0 else 100.0
         return np.array(predictions)
 
-
-def kNNAlgorithm(
-    X_train,
-    y_train,
-    X_test,
-    y_test=None,
-    k=3,
-    distance_metric="euclidean",
-    voting_scheme="majority",
-    retention_policy="never_retain",
-    alpha=0.2,
-    p=1.0,
-):
-    """Classify each instance from TestMatrix (X_test) using TrainMatrix (X_train, y_train).
-
-    Returns
-    -------
-    predictions : np.ndarray
-        Predicted class labels for X_test.
-    training_time : float
-        Time in seconds spent fitting the training matrix.
-    prediction_time : float
-        Problem-solving time in seconds spent classifying X_test.
-    """
-    model = KNNClassifier(
-        k=k,
-        distance_metric=distance_metric,
-        voting_scheme=voting_scheme,
-        retention_policy=retention_policy,
-        alpha=alpha,
-        p=p,
-    )
-
-    start = perf_counter()
-    model.fit(X_train, y_train)
-    training_time = perf_counter() - start
-
-    start = perf_counter()
-    predictions = model.predict(X_test, y_test=y_test)
-    prediction_time = perf_counter() - start
-
-    return predictions, training_time, prediction_time
 

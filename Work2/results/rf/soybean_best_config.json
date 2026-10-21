@@ -1,0 +1,22 @@
+{
+  "dataset": "soybean",
+  "algorithm": "RF",
+  "criterion": "accuracy",
+  "best_model": "RF(n=200, crit=log_loss, depth=10)",
+  "n_configurations_compared": 27,
+  "mean_accuracy": 0.9404905297881518,
+  "std_accuracy": 0.0241756152974862,
+  "mean_f1_macro": 0.0,
+  "mean_prediction_time": 0.0427448200032813,
+  "mean_prediction_time_ms": 42.744820003281305,
+  "mean_training_time": 0.0,
+  "mean_storage_pct": 100.0,
+  "friedman_chi2": 182.04206286318012,
+  "friedman_p": 2.2909775587619545e-25,
+  "friedman_significant": true,
+  "wilcoxon_best_vs_second_p": 1.0,
+  "wilcoxon_best_vs_second_significant": false,
+  "friedman_chi2_accuracy": 182.04206286318012,
+  "friedman_p_accuracy": 2.2909775587619545e-25,
+  "friedman_significant_accuracy": true
+}

@@ -1,0 +1,9 @@
+model,average_rank,mean_score,std_score,rank_diff_from_best,within_nemenyi_cd,within_bonferroni_cd
+"KNN(k=7, metric=manhattan, voting=majority, retention=different_class)",1.3,0.012334169994574,0.0008742958369351105,0.0,True,True
+"KNN(k=7, metric=euclidean, voting=majority, retention=different_class)",1.7,0.01245757999713529,0.0008821363978622935,0.3999999999999999,True,True
+"KNN(k=7, metric=heom, voting=majority, retention=different_class)",3.0,0.01411113999201911,0.0008314835279796226,1.7,True,True
+"KNN(k=3, metric=manhattan, voting=majority, retention=always_retain)",4.1,0.015235940000275108,0.0008846351672848578,2.8,True,True
+"KNN(k=3, metric=euclidean, voting=majority, retention=always_retain)",4.9,0.01650962998974133,0.0009828911036843548,3.6000000000000005,False,False
+"KNN(k=7, metric=canberra, voting=majority, retention=different_class)",6.0,0.01839942000806327,0.0009797122761406414,4.7,False,False
+"KNN(k=3, metric=canberra, voting=majority, retention=always_retain)",7.0,0.02196605000644915,0.0009708665877735962,5.7,False,False
+"KNN(k=3, metric=canberra, voting=inverse_distance, retention=always_retain)",8.0,0.03286306000081818,0.0028934739540677165,6.7,False,False
