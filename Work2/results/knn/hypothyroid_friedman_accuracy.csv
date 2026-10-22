@@ -73,10 +73,10 @@ model,average_rank,mean_score,std_score,rank_diff_from_best,within_nemenyi_cd,wi
 "KNN(k=5, metric=heom, voting=inverse_distance, retention=oblivion_by_goodness)",64.6,0.9329379181048294,0.009277764199504211,55.74999999999999,False,False
 "KNN(k=3, metric=euclidean, voting=majority, retention=different_class)",64.75,0.9321456969784924,0.009267066304245007,55.9,False,False
 "KNN(k=3, metric=heom, voting=majority, retention=different_class)",64.75,0.9321456969784924,0.009267066304245007,55.9,False,False
-"KNN(k=5, metric=euclidean, voting=majority, retention=always_retain)",64.9,0.9326740733275584,0.008200468759034824,56.050000000000004,False,False
+"KNN(k=5, metric=heom, voting=majority, retention=different_class)",64.9,0.9326740733275584,0.008200468759034824,56.050000000000004,False,False
 "KNN(k=5, metric=euclidean, voting=majority, retention=different_class)",64.9,0.9326740733275584,0.008200468759034824,56.050000000000004,False,False
 "KNN(k=5, metric=heom, voting=majority, retention=always_retain)",64.9,0.9326740733275584,0.008200468759034824,56.050000000000004,False,False
-"KNN(k=5, metric=heom, voting=majority, retention=different_class)",64.9,0.9326740733275584,0.008200468759034824,56.050000000000004,False,False
+"KNN(k=5, metric=euclidean, voting=majority, retention=always_retain)",64.9,0.9326740733275584,0.008200468759034824,56.050000000000004,False,False
 "KNN(k=5, metric=euclidean, voting=inverse_distance, retention=always_retain)",65.35,0.9326754842423955,0.01037960844112487,56.49999999999999,False,False
 "KNN(k=5, metric=euclidean, voting=inverse_distance, retention=never_retain)",67.4,0.9321470966657323,0.010143661995732588,58.550000000000004,False,False
 "KNN(k=5, metric=euclidean, voting=inverse_distance, retention=oblivion_by_goodness)",67.55,0.9324088175757289,0.009534142982076792,58.699999999999996,False,False
@@ -91,7 +91,7 @@ model,average_rank,mean_score,std_score,rank_diff_from_best,within_nemenyi_cd,wi
 "KNN(k=3, metric=heom, voting=inverse_distance, retention=oblivion_by_goodness)",79.85,0.9297598100684675,0.00967621916276718,71.0,False,False
 "KNN(k=3, metric=euclidean, voting=inverse_distance, retention=never_retain)",80.3,0.9289689848669308,0.011537136848604855,71.45,False,False
 "KNN(k=3, metric=heom, voting=inverse_distance, retention=never_retain)",80.3,0.9289689848669308,0.011537136848604855,71.45,False,False
-"KNN(k=3, metric=heom, voting=inverse_distance, retention=always_retain)",80.45,0.9279121947534273,0.012486061121768333,71.60000000000001,False,False
 "KNN(k=3, metric=euclidean, voting=inverse_distance, retention=always_retain)",80.45,0.9279121947534273,0.012486061121768333,71.60000000000001,False,False
+"KNN(k=3, metric=heom, voting=inverse_distance, retention=always_retain)",80.45,0.9279121947534273,0.012486061121768333,71.60000000000001,False,False
 "KNN(k=3, metric=euclidean, voting=inverse_distance, retention=different_class)",83.85,0.927644826361921,0.012068767332713897,75.0,False,False
 "KNN(k=3, metric=heom, voting=inverse_distance, retention=different_class)",83.85,0.927644826361921,0.012068767332713897,75.0,False,False

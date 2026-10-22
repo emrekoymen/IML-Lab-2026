@@ -5,5 +5,5 @@ model,average_rank,mean_score,std_score,rank_diff_from_best,within_nemenyi_cd,wi
 "SVM(kernel=poly, C=1.0, gamma=0.1, degree=3)",4.5,0.9365857116483415,0.026880826978698303,0.6499999999999999,True,True
 "SVM(kernel=poly, C=10.0, gamma=scale, degree=3)",4.5,0.9365857116483415,0.026880826978698303,0.6499999999999999,True,True
 "SVM(kernel=rbf, C=1.0, gamma=scale)",4.75,0.9361449622081907,0.018271903043350884,0.8999999999999999,True,True
-"SVM(kernel=poly, C=0.1, gamma=0.1, degree=2)",4.9,0.935995389558618,0.018619031468981723,1.0500000000000003,True,True
 "SVM(kernel=poly, C=10.0, gamma=0.01, degree=2)",4.9,0.935995389558618,0.018619031468981723,1.0500000000000003,True,True
+"SVM(kernel=poly, C=0.1, gamma=0.1, degree=2)",4.9,0.935995389558618,0.018619031468981723,1.0500000000000003,True,True

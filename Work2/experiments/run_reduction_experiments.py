@@ -69,7 +69,7 @@ BEST_CONFIGS = {
             "retention_policy": "always_retain",
         },
         "knn_best_static": {
-            "k": 7,
+            "k": 5,
             "distance_metric": "canberra",
             "voting_scheme": "inverse_distance",
             "retention_policy": "never_retain",
@@ -149,15 +149,35 @@ def run_reduction_experiments_for_dataset(dataset_name="soybean", n_folds=10, ou
                 "peak_memory_mb": res_knn_nr["peak_memory_mb"],
             })
 
+            # Subsample for SVM, RF, and kNN (AR) when reduction does not depend on k/voting
+            X_tr_red = X_tr_arr[kept]
+            y_tr_red = y_tr_arr[kept]
+
             # 2. Best kNN (Dynamic AR policy on reduced initial set)
-            res_knn_ar = reduction_kNNAlgorithm(
-                X_tr_arr,
-                y_tr_arr,
-                X_te_arr,
-                y_te_arr,
-                method=method,
-                **knn_overall_cfg,
-            )
+            if method == "del" and (
+                knn_overall_cfg["k"] != knn_static_cfg["k"]
+                or knn_overall_cfg["voting_scheme"] != knn_static_cfg["voting_scheme"]
+            ):
+                res_knn_ar = reduction_kNNAlgorithm(
+                    X_tr_arr,
+                    y_tr_arr,
+                    X_te_arr,
+                    y_te_arr,
+                    method=method,
+                    **knn_overall_cfg,
+                )
+            else:
+                from models import kNNAlgorithm
+                res_knn_ar = kNNAlgorithm(
+                    X_tr_red,
+                    y_tr_red,
+                    X_te_arr,
+                    y_te_arr,
+                    **knn_overall_cfg,
+                )
+                res_knn_ar["reduction_time"] = red_time
+                res_knn_ar["final_storage_pct"] = (res_knn_ar["n_stored"] / len(y_tr_arr) * 100.0) if len(y_tr_arr) > 0 else 100.0
+
             m_knn_ar = f"KNN(reduction={method}, k={knn_overall_cfg['k']}, metric={knn_overall_cfg['distance_metric']}, voting={knn_overall_cfg['voting_scheme']}, retention={knn_overall_cfg['retention_policy']})"
             fold_rows.append({
                 "dataset": dataset_name,
@@ -177,12 +197,6 @@ def run_reduction_experiments_for_dataset(dataset_name="soybean", n_folds=10, ou
                 "training_time": res_knn_ar.get("training_time", 0.0),
                 "peak_memory_mb": res_knn_ar["peak_memory_mb"],
             })
-
-            # Subsample for SVM and RF using the same reduced indices as the NR kNN above.
-            # This is intentional (assignment Point 6.e): evaluate how kNN-derived reduction
-            # affects SVM and RF when trained on the same reduced training set.
-            X_tr_red = X_tr_arr[kept]
-            y_tr_red = y_tr_arr[kept]
 
             # 3. SVM trained on reduced set
             res_svm = svmAlgorithm(
