@@ -1,3 +1,0 @@
-model_a,model_b,mean_a,mean_b,mean_diff,wilcoxon_stat,p_value,significant,ttest_stat,ttest_p_value
-"KNN(k=3, metric=canberra, voting=majority, retention=always_retain)","KNN(k=3, metric=canberra, voting=inverse_distance, retention=always_retain)",0.9261388743316298,0.9246463370181969,0.0014925373134328402,22.5,1.0,False,1.0000000000000002,0.3434363961379133
-"KNN(k=3, metric=canberra, voting=majority, retention=always_retain)","KNN(k=7, metric=canberra, voting=inverse_distance, retention=never_retain)",0.9261388743316298,0.9215146023515572,0.0046242719800725805,17.5,0.34375,False,0.7329211098837627,0.48225834212909097

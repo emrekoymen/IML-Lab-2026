@@ -21,10 +21,6 @@ def canberra_distance(X_query, X_base, eps=1e-12):
     return np.sum(num / denom, axis=-1)
 
 
-def hamming_distance(X_query, X_base):
-    # Proportion of features that differ
-    return np.mean(X_query[:, np.newaxis, :] != X_base[np.newaxis, :, :], axis=-1)
-
 
 def heom_distance(X_query, X_base):
     """Heterogeneous Euclidean Overlap Metric (HEOM) by Wilson & Martinez (1997).
@@ -50,7 +46,6 @@ DISTANCES = {
     "manhattan": manhattan_distance,
     "canberra": canberra_distance,
     "heom": heom_distance,
-    "hamming": hamming_distance,
 }
 
 

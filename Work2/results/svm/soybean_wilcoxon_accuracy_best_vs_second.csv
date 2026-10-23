@@ -1,0 +1,2 @@
+model_a,model_b,mean_a,mean_b,mean_diff,wilcoxon_stat,p_value,significant,ttest_stat,ttest_p_value
+"SVM(kernel=rbf, C=1.0, gamma=0.1)","SVM(kernel=poly, C=1.0, gamma=0.1, degree=3)",0.9417804660525126,0.9365857116483414,0.005194754404171243,21.0,0.546875,False,0.7201394201961506,0.4897181368027138

@@ -1,0 +1,22 @@
+{
+  "dataset": "hypothyroid",
+  "algorithm": "KNN",
+  "criterion": "accuracy",
+  "best_model": "KNN(k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",
+  "n_configurations_compared": 96,
+  "mean_accuracy": 0.96634302561654,
+  "std_accuracy": 0.0106457525488941,
+  "mean_f1_macro": 0.0,
+  "mean_prediction_time": 0.8927857199916616,
+  "mean_prediction_time_ms": 892.7857199916616,
+  "mean_training_time": 0.0,
+  "mean_storage_pct": 111.11112036382848,
+  "friedman_chi2": 670.6382544177901,
+  "friedman_p": 1.9755783095622308e-87,
+  "friedman_significant": true,
+  "wilcoxon_best_vs_second_p": 1.0,
+  "wilcoxon_best_vs_second_significant": false,
+  "friedman_chi2_accuracy": 670.6382544177901,
+  "friedman_p_accuracy": 1.9755783095622308e-87,
+  "friedman_significant_accuracy": true
+}

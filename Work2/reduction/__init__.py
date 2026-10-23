@@ -1,3 +1,3 @@
-from .reduction import reduce, reduction_kNNAlgorithm, REDUCTION_METHODS
+from .reduction import reduce, REDUCTION_METHODS
 
-__all__ = ["reduce", "reduction_kNNAlgorithm", "REDUCTION_METHODS"]
+__all__ = ["reduce", "REDUCTION_METHODS"]

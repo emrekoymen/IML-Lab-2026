@@ -4,7 +4,13 @@ import numpy as np
 
 
 class RetentionManager:
-    """Manages online instance retention and forgetting during prediction."""
+    """Manages online instance retention and forgetting during prediction.
+
+    For AR and DC policies the case base grows (new test points are appended).
+    For the OG (Oblivion by Goodness) policy the case base uses *soft-deletion*:
+    X_base and y_base are never physically shrunk, only ``active_mask`` is updated
+    (entries are set to False). This keeps all pre-computed distance indices valid.
+    """
 
     def __init__(self, X_train, y_train, policy="never_retain", alpha=0.2, initial_goodness=0.5):
         self.policy = policy.lower()
@@ -16,6 +22,8 @@ class RetentionManager:
 
         if self.policy in ("oblivion_by_goodness", "og"):
             self.goodness = np.full(len(self.y_base), self.initial_goodness, dtype=float)
+            # Soft-deletion mask: True = active, False = logically deleted.
+            # Never physically shrink X_base/y_base for OG so distance indices stay valid.
             self.active_mask = np.ones(len(self.y_base), dtype=bool)
         else:
             self.goodness = None
@@ -27,6 +35,9 @@ class RetentionManager:
 
     @property
     def size(self):
+        """Number of *active* cases in the base."""
+        if self.active_mask is not None:
+            return int(self.active_mask.sum())
         return len(self.y_base)
 
     def update(self, query_x, true_label, pred_label, retrieved_indices):
@@ -53,27 +64,22 @@ class RetentionManager:
             self.active_mask = np.append(self.active_mask, True)
 
     def _update_oblivion(self, true_label, retrieved_indices):
+        """Update goodness values and soft-delete cases whose goodness falls below baseline.
+
+        Soft-deletion (active_mask[idx] = False) is used instead of physical removal so
+        that all pre-computed distance vectors remain index-aligned with X_base.
+        """
         if true_label is None:
             return
 
-        to_remove = set()
         for idx in retrieved_indices:
+            # idx refers to a position in the *full* (unmasked) X_base
+            if not self.active_mask[idx]:
+                continue  # already deleted; skip
             reward = 1.0 if self.y_base[idx] == true_label else 0.0
-            old_g = self.goodness[idx]
-            new_g = old_g + self.alpha * (reward - old_g)
+            new_g = self.goodness[idx] + self.alpha * (reward - self.goodness[idx])
             self.goodness[idx] = new_g
-
-            # Remove case if goodness drops below baseline
+            # Soft-delete if goodness falls below the initial baseline
             if new_g < self.initial_goodness:
-                to_remove.add(idx)
-
-        if to_remove:
-            keep = np.ones(len(self.y_base), dtype=bool)
-            keep[list(to_remove)] = False
-            self.X_base = self.X_base[keep]
-            self.y_base = self.y_base[keep]
-            self.goodness = self.goodness[keep]
-            if self.active_mask is not None:
-                active_positions = np.flatnonzero(self.active_mask)
-                self.active_mask[active_positions[list(to_remove)]] = False
+                self.active_mask[idx] = False
 

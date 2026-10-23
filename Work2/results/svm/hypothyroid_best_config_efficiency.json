@@ -1,0 +1,22 @@
+{
+  "dataset": "hypothyroid",
+  "algorithm": "SVM",
+  "criterion": "efficiency",
+  "best_model": "SVM(kernel=poly, C=100.0, gamma=1.0, degree=3)",
+  "n_configurations_compared": 52,
+  "mean_accuracy": 0.9732374983539328,
+  "std_accuracy": 0.012296154954331,
+  "mean_f1_macro": 0.0,
+  "mean_prediction_time": 0.0018041600123979151,
+  "mean_prediction_time_ms": 1.8041600123979151,
+  "mean_training_time": 0.0,
+  "mean_storage_pct": 100.0,
+  "friedman_chi2": 476.70391872278697,
+  "friedman_p": 1.924371985916273e-70,
+  "friedman_significant": true,
+  "wilcoxon_best_vs_second_p": 0.001953125,
+  "wilcoxon_best_vs_second_significant": true,
+  "friedman_chi2_accuracy": 492.9185258884514,
+  "friedman_p_accuracy": 1.3110277359386353e-73,
+  "friedman_significant_accuracy": true
+}

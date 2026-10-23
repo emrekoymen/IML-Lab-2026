@@ -1,10 +1,8 @@
-"""Entry points: reduce a training set, and the reduction_kNNAlgorithm."""
+"""Entry points: reduce a training set."""
 
 from time import perf_counter
 
 import numpy as np
-
-from KNNClassifier import KNNClassifier
 
 from ._common import pairwise_distances
 from .del_reduction import del_reduction
@@ -58,28 +56,4 @@ def reduce(X, y, method, distance_metric="euclidean", k=3, voting_scheme="majori
     info["storage"] = len(kept) / len(y)
 
     return (kept, info) if return_info else kept
-
-
-def reduction_kNNAlgorithm(X_train, y_train, X_test, y_test=None, method="gcnn", k=3,
-                           distance_metric="euclidean", voting_scheme="majority",
-                           retention_policy="never_retain", alpha=0.2, p=1.0, **method_params):
-    """Reduce the training set, then classify X_test with the kNN. Returns (predictions, info)."""
-    kept, info = reduce(
-        X_train, y_train, method, distance_metric=distance_metric, k=k,
-        voting_scheme=voting_scheme, p=p, return_info=True, **method_params,
-    )
-
-    model = KNNClassifier(
-        k=k, distance_metric=distance_metric, voting_scheme=voting_scheme,
-        retention_policy=retention_policy, alpha=alpha, p=p,
-    )
-    model.fit(np.asarray(X_train, dtype=float)[kept], np.asarray(y_train)[kept])
-
-    start = perf_counter()
-    predictions = model.predict(np.asarray(X_test, dtype=float), y_test)
-    info["prediction_time"] = perf_counter() - start
-    info["kept_indices"] = kept
-    info["n_final_stored"] = getattr(model, "n_stored_", len(kept))
-    info["final_storage"] = info["n_final_stored"] / len(y_train) if len(y_train) > 0 else 1.0
-    return predictions, info
 
