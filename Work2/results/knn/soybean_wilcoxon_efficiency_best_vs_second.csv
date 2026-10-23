@@ -1,2 +1,2 @@
 model_a,model_b,mean_a,mean_b,mean_diff,wilcoxon_stat,p_value,significant,ttest_stat,ttest_p_value
-"KNN(k=5, metric=euclidean, voting=majority, retention=never_retain)","KNN(k=3, metric=manhattan, voting=majority, retention=never_retain)",0.020742919988697338,0.02032816000864835,0.0004147599800489895,22.0,0.625,False,0.5310797781281721,0.6082182954395947
+"KNN(k=5, metric=euclidean, voting=majority, retention=never_retain)","KNN(k=3, metric=manhattan, voting=majority, retention=never_retain)",0.018088779994286597,0.018341370002599434,-0.0002525900083128373,25.0,0.845703125,False,-0.28064835529776944,0.7853247925751958

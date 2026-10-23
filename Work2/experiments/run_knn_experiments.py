@@ -94,6 +94,7 @@ def run_knn_experiments(
         "correct_classification_count",
         "misclassification_count",
         "accuracy",
+        "storage_pct",
         "prediction_time_ms",
     ]
     df_folds_save = df_folds.rename(columns={
@@ -105,7 +106,7 @@ def run_knn_experiments(
     print(f"[Saved] Detailed fold results: {fold_csv}")
 
     # 2. Aggregated summary DataFrame across folds
-    summary_mean = df_folds.groupby("model", as_index=False)[["accuracy", "prediction_time_ms"]].mean()
+    summary_mean = df_folds.groupby("model", as_index=False)[["accuracy", "storage_pct", "prediction_time_ms"]].mean()
     summary_std = df_folds.groupby("model", as_index=False)["accuracy"].std()
     summary_mean["accuracy_std"] = summary_std["accuracy"]
 
@@ -113,6 +114,7 @@ def run_knn_experiments(
         "model",
         "accuracy",
         "accuracy_std",
+        "storage_pct",
         "prediction_time_ms",
     ]
     summary_mean = summary_mean.sort_values(by="accuracy", ascending=False)[summary_cols]
