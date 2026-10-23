@@ -1,17 +1,16 @@
-# IML Work 2 — Lazy Learning, SVM, Random Forest & Instance Reduction
+# IML Work 2 - Lazy Learning, SVM, Random Forest & Instance Reduction
 
-> **Course:** Introduction to Machine Learning (MAI — UPC, UB, URV)
 > **Datasets:** Soybean (683 instances, 35 features) · Hypothyroid (3,772 instances, 29 features)
-> **Evaluation:** Pre-supplied 10-fold cross-validation ARFF files (do not regenerate splits)
 
 ---
 
 ## Team
 
-- [Hasti Sadat Mousavinia]
-- [Full name of member 1]
-- [Full name of member 2]
-- [Full name of member 3]
+- **Hasti Sadat Mousavinia**
+- **Michelle Miranda**
+- **Emre Köymen**
+- **Fatima Zahra**
+
 
 ## Environment
 
