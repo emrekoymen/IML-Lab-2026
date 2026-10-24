@@ -1,161 +1,161 @@
 fold,model,correct_classification_count,misclassification_count,accuracy,storage_pct,prediction_time_ms
-0,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",364,11,0.9706666666666667,100.0,875.8630999946035
-0,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",364,11,0.9706666666666667,111.03915219311158,963.0511999712326
-0,"SVM(reduction=none, kernel=rbf, C=100.0, gamma=0.1)",354,21,0.944,100.0,20.658499968703836
-0,"RF(reduction=none, n=200, crit=entropy, depth=20)",373,2,0.9946666666666667,100.0,34.73129996564239
-0,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",362,13,0.9653333333333334,10.627023844568736,122.91969999205321
-0,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",365,10,0.9733333333333334,21.66617603768031,229.80500000994653
-0,"SVM(reduction=gcnn, kernel=rbf, C=100.0, gamma=0.1)",352,23,0.9386666666666666,10.627023844568736,11.632699985057116
-0,"RF(reduction=gcnn, n=200, crit=entropy, depth=20)",371,4,0.9893333333333333,10.627023844568736,33.83879998000339
-0,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",361,14,0.9626666666666667,97.05622608183691,711.21320000384
-0,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",361,14,0.9626666666666667,108.09537827494849,951.3529000105336
-0,"SVM(reduction=rnge, kernel=rbf, C=100.0, gamma=0.1)",355,20,0.9466666666666667,97.05622608183691,5.966100026853383
-0,"RF(reduction=rnge, n=200, crit=entropy, depth=20)",372,3,0.992,97.05622608183691,33.89310004422441
-0,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",362,13,0.9653333333333334,7.6538121872240215,108.16160001559183
-0,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",367,8,0.9786666666666667,18.692964380335592,219.78420001687482
-0,"SVM(reduction=del, kernel=rbf, C=100.0, gamma=0.1)",328,47,0.8746666666666667,7.6538121872240215,4.172299988567829
-0,"RF(reduction=del, n=200, crit=entropy, depth=20)",371,4,0.9893333333333333,7.6538121872240215,34.61820003576577
-1,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",368,10,0.9735449735449735,100.0,661.0308999661356
-1,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",368,10,0.9735449735449735,111.13730111962286,914.0585999703035
-1,"SVM(reduction=none, kernel=rbf, C=100.0, gamma=0.1)",354,24,0.9365079365079365,100.0,8.758800046052784
-1,"RF(reduction=none, n=200, crit=entropy, depth=20)",375,3,0.9920634920634921,100.0,36.60930000478402
-1,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",368,10,0.9735449735449735,10.518562168532705,122.22449999535456
-1,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",364,14,0.9629629629629629,21.65586328815557,241.52680003317073
-1,"SVM(reduction=gcnn, kernel=rbf, C=100.0, gamma=0.1)",353,25,0.9338624338624338,10.518562168532705,5.534099997021258
-1,"RF(reduction=gcnn, n=200, crit=entropy, depth=20)",374,4,0.9894179894179894,10.518562168532705,34.953199967276305
-1,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",364,14,0.9629629629629629,97.25987035945786,856.4584000268951
-1,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",364,14,0.9629629629629629,108.39717147908073,938.9302000054158
-1,"SVM(reduction=rnge, kernel=rbf, C=100.0, gamma=0.1)",354,24,0.9365079365079365,97.25987035945786,6.957800011150539
-1,"RF(reduction=rnge, n=200, crit=entropy, depth=20)",373,5,0.9867724867724867,97.25987035945786,37.13349997997284
-1,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",367,11,0.9708994708994709,7.7489687684148505,109.73229998489842
-1,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",368,10,0.9735449735449735,18.886269888037713,226.84999997727573
-1,"SVM(reduction=del, kernel=rbf, C=100.0, gamma=0.1)",335,43,0.8862433862433863,7.7489687684148505,4.377199977170676
-1,"RF(reduction=del, n=200, crit=entropy, depth=20)",374,4,0.9894179894179894,7.7489687684148505,33.45559997251257
-2,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",366,11,0.9708222811671088,100.0,665.7686000107788
-2,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",366,11,0.9708222811671088,111.10456553755523,908.2642000284977
-2,"SVM(reduction=none, kernel=rbf, C=100.0, gamma=0.1)",358,19,0.9496021220159151,100.0,9.462799993343651
-2,"RF(reduction=none, n=200, crit=entropy, depth=20)",376,1,0.9973474801061007,100.0,33.47849997226149
-2,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",367,10,0.9734748010610079,10.36818851251841,134.75219998508692
-2,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",363,14,0.9628647214854111,21.472754050073636,258.34120000945404
-2,"SVM(reduction=gcnn, kernel=rbf, C=100.0, gamma=0.1)",357,20,0.946949602122016,10.36818851251841,4.734499962069094
-2,"RF(reduction=gcnn, n=200, crit=entropy, depth=20)",376,1,0.9973474801061007,10.36818851251841,32.86300000036135
-2,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",366,11,0.9708222811671088,97.26067746686303,643.7969999969937
-2,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",366,11,0.9708222811671088,108.36524300441826,919.4564999779686
-2,"SVM(reduction=rnge, kernel=rbf, C=100.0, gamma=0.1)",359,18,0.9522546419098143,97.26067746686303,6.1558999586850405
-2,"RF(reduction=rnge, n=200, crit=entropy, depth=20)",375,2,0.9946949602122016,97.26067746686303,40.245699987281114
-2,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",366,11,0.9708222811671088,7.92341678939617,108.98800002178177
-2,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",368,9,0.9761273209549072,19.0279823269514,223.64809998543933
-2,"SVM(reduction=del, kernel=rbf, C=100.0, gamma=0.1)",354,23,0.9389920424403183,7.92341678939617,4.306799964979291
-2,"RF(reduction=del, n=200, crit=entropy, depth=20)",375,2,0.9946949602122016,7.92341678939617,32.71989995846525
-3,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",358,19,0.9496021220159151,100.0,641.7706000502221
-3,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",358,19,0.9496021220159151,111.10456553755523,907.4591000098735
-3,"SVM(reduction=none, kernel=rbf, C=100.0, gamma=0.1)",359,18,0.9522546419098143,100.0,9.151000005658716
-3,"RF(reduction=none, n=200, crit=entropy, depth=20)",374,3,0.9920424403183024,100.0,32.87940000882372
-3,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",362,15,0.9602122015915119,10.397643593519883,124.94629999855533
-3,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",363,14,0.9628647214854111,21.502209131075112,243.1605000165291
-3,"SVM(reduction=gcnn, kernel=rbf, C=100.0, gamma=0.1)",354,23,0.9389920424403183,10.397643593519883,4.948700021486729
-3,"RF(reduction=gcnn, n=200, crit=entropy, depth=20)",376,1,0.9973474801061007,10.397643593519883,33.70840003481135
-3,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",356,21,0.9442970822281167,97.49631811487481,617.2942999983206
-3,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",356,21,0.9442970822281167,108.60088365243004,869.115800014697
-3,"SVM(reduction=rnge, kernel=rbf, C=100.0, gamma=0.1)",355,22,0.9416445623342176,97.49631811487481,6.389199988916516
-3,"RF(reduction=rnge, n=200, crit=entropy, depth=20)",371,6,0.9840848806366048,97.49631811487481,33.18910003872588
-3,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",363,14,0.9628647214854111,7.039764359351988,105.67969997646287
-3,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",362,15,0.9602122015915119,18.144329896907216,220.69530002772808
-3,"SVM(reduction=del, kernel=rbf, C=100.0, gamma=0.1)",335,42,0.8885941644562334,7.039764359351988,3.748800023458898
-3,"RF(reduction=del, n=200, crit=entropy, depth=20)",375,2,0.9946949602122016,7.039764359351988,34.34249997371808
-4,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",365,13,0.9656084656084656,100.0,614.677700039465
-4,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",365,13,0.9656084656084656,111.13730111962286,864.7078000358306
-4,"SVM(reduction=none, kernel=rbf, C=100.0, gamma=0.1)",361,17,0.955026455026455,100.0,9.282500017434359
-4,"RF(reduction=none, n=200, crit=entropy, depth=20)",376,2,0.9947089947089947,100.0,33.895500004291534
-4,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",365,13,0.9656084656084656,10.13553329404832,122.99980001989752
-4,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",368,10,0.9735449735449735,21.272834413671184,255.55539998458698
-4,"SVM(reduction=gcnn, kernel=rbf, C=100.0, gamma=0.1)",357,21,0.9444444444444444,10.13553329404832,5.285100021865219
-4,"RF(reduction=gcnn, n=200, crit=entropy, depth=20)",376,2,0.9947089947089947,10.13553329404832,32.824399997480214
-4,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",365,13,0.9656084656084656,97.1714790807307,594.7247000294738
-4,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",365,13,0.9656084656084656,108.30878020035357,835.3509000153281
-4,"SVM(reduction=rnge, kernel=rbf, C=100.0, gamma=0.1)",359,19,0.9497354497354498,97.1714790807307,6.170000007841736
-4,"RF(reduction=rnge, n=200, crit=entropy, depth=20)",376,2,0.9947089947089947,97.1714790807307,32.975299982354045
-4,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",362,16,0.9576719576719577,7.483794932233353,115.2023000176996
-4,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",365,13,0.9656084656084656,18.621096051856217,221.73170000314713
-4,"SVM(reduction=del, kernel=rbf, C=100.0, gamma=0.1)",351,27,0.9285714285714286,7.483794932233353,4.148299980442971
-4,"RF(reduction=del, n=200, crit=entropy, depth=20)",376,2,0.9947089947089947,7.483794932233353,35.15969996806234
-5,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",362,16,0.9576719576719577,100.0,637.7963999984786
-5,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",361,17,0.955026455026455,111.13730111962286,879.8896999796852
-5,"SVM(reduction=none, kernel=rbf, C=100.0, gamma=0.1)",358,20,0.9470899470899471,100.0,9.036699950229377
-5,"RF(reduction=none, n=200, crit=entropy, depth=20)",376,2,0.9947089947089947,100.0,33.84910000022501
-5,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",366,12,0.9682539682539683,10.076605774896876,118.00149996997789
-5,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",366,12,0.9682539682539683,21.21390689451974,238.09189995517954
-5,"SVM(reduction=gcnn, kernel=rbf, C=100.0, gamma=0.1)",357,21,0.9444444444444444,10.076605774896876,4.759999981615692
-5,"RF(reduction=gcnn, n=200, crit=entropy, depth=20)",376,2,0.9947089947089947,10.076605774896876,35.45000002486631
-5,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",362,16,0.9576719576719577,97.46611667648793,615.5003000167198
-5,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",361,17,0.955026455026455,108.60341779611078,855.309100006707
-5,"SVM(reduction=rnge, kernel=rbf, C=100.0, gamma=0.1)",354,24,0.9365079365079365,97.46611667648793,6.19470002129674
-5,"RF(reduction=rnge, n=200, crit=entropy, depth=20)",375,3,0.9920634920634921,97.46611667648793,33.5835000150837
-5,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",366,12,0.9682539682539683,7.454331172657631,105.1234999904409
-5,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",366,12,0.9682539682539683,18.591632292280494,222.6954000070691
-5,"SVM(reduction=del, kernel=rbf, C=100.0, gamma=0.1)",345,33,0.9126984126984127,7.454331172657631,3.983300004620105
-5,"RF(reduction=del, n=200, crit=entropy, depth=20)",372,6,0.9841269841269841,7.454331172657631,34.162299998570234
-6,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",362,16,0.9576719576719577,100.0,625.3973999992013
-6,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",362,16,0.9576719576719577,111.13730111962286,836.168700014241
-6,"SVM(reduction=none, kernel=rbf, C=100.0, gamma=0.1)",352,26,0.9312169312169312,100.0,8.784700010437518
-6,"RF(reduction=none, n=200, crit=entropy, depth=20)",376,2,0.9947089947089947,100.0,33.66390004521236
-6,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",368,10,0.9735449735449735,9.899823217442545,166.47669998928905
-6,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",366,12,0.9682539682539683,21.03712433706541,394.08739999635145
-6,"SVM(reduction=gcnn, kernel=rbf, C=100.0, gamma=0.1)",349,29,0.9232804232804233,9.899823217442545,8.933499979320914
-6,"RF(reduction=gcnn, n=200, crit=entropy, depth=20)",376,2,0.9947089947089947,9.899823217442545,54.892599990125746
-6,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",360,18,0.9523809523809523,97.40718915733648,835.366300016176
-6,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",360,18,0.9523809523809523,108.54449027695934,1184.4301999663003
-6,"SVM(reduction=rnge, kernel=rbf, C=100.0, gamma=0.1)",352,26,0.9312169312169312,97.40718915733648,9.836199984420091
-6,"RF(reduction=rnge, n=200, crit=entropy, depth=20)",374,4,0.9894179894179894,97.40718915733648,58.181800006423146
-6,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",364,14,0.9629629629629629,7.542722451384797,104.55720004392788
-6,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",365,13,0.9656084656084656,18.680023571007663,221.85170004377142
-6,"SVM(reduction=del, kernel=rbf, C=100.0, gamma=0.1)",343,35,0.9074074074074074,7.542722451384797,4.220800008624792
-6,"RF(reduction=del, n=200, crit=entropy, depth=20)",375,3,0.9920634920634921,7.542722451384797,32.87919994909316
-7,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",361,17,0.955026455026455,100.0,657.5832000235096
-7,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",363,15,0.9603174603174603,111.13730111962286,860.5804999824613
-7,"SVM(reduction=none, kernel=rbf, C=100.0, gamma=0.1)",354,24,0.9365079365079365,100.0,8.956600038800389
-7,"RF(reduction=none, n=200, crit=entropy, depth=20)",377,1,0.9973544973544973,100.0,33.63369998987764
-7,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",362,16,0.9576719576719577,9.752504419563936,112.95750003773719
-7,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",363,15,0.9603174603174603,20.889805539186803,238.0560000310652
-7,"SVM(reduction=gcnn, kernel=rbf, C=100.0, gamma=0.1)",351,27,0.9285714285714286,9.752504419563936,4.829499986954033
-7,"RF(reduction=gcnn, n=200, crit=entropy, depth=20)",376,2,0.9947089947089947,9.752504419563936,33.30199996707961
-7,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",360,18,0.9523809523809523,97.34826163818504,622.977799968794
-7,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",360,18,0.9523809523809523,108.4855627578079,863.289300003089
-7,"SVM(reduction=rnge, kernel=rbf, C=100.0, gamma=0.1)",355,23,0.9391534391534392,97.34826163818504,6.599899963475764
-7,"RF(reduction=rnge, n=200, crit=entropy, depth=20)",372,6,0.9841269841269841,97.34826163818504,33.01349998218939
-7,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",360,18,0.9523809523809523,7.454331172657631,107.4320999905467
-7,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",362,16,0.9576719576719577,18.591632292280494,228.63039997173473
-7,"SVM(reduction=del, kernel=rbf, C=100.0, gamma=0.1)",319,59,0.843915343915344,7.454331172657631,3.9862999692559242
-7,"RF(reduction=del, n=200, crit=entropy, depth=20)",373,5,0.9867724867724867,7.454331172657631,33.06889999657869
-8,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",368,9,0.9761273209549072,100.0,640.8358000335284
-8,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",368,9,0.9761273209549072,111.10456553755523,935.239200014621
-8,"SVM(reduction=none, kernel=rbf, C=100.0, gamma=0.1)",359,18,0.9522546419098143,100.0,9.35329997446388
-8,"RF(reduction=none, n=200, crit=entropy, depth=20)",376,1,0.9973474801061007,100.0,33.58499996829778
-8,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",364,13,0.9655172413793104,10.721649484536082,118.58840001514181
-8,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",363,14,0.9628647214854111,21.82621502209131,271.48319996194914
-8,"SVM(reduction=gcnn, kernel=rbf, C=100.0, gamma=0.1)",352,25,0.9336870026525199,10.721649484536082,5.141400033608079
-8,"RF(reduction=gcnn, n=200, crit=entropy, depth=20)",373,4,0.9893899204244032,10.721649484536082,33.21560000767931
-8,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",363,14,0.9628647214854111,97.11340206185567,604.1183999623172
-8,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",364,13,0.9655172413793104,108.2179675994109,828.1961000175215
-8,"SVM(reduction=rnge, kernel=rbf, C=100.0, gamma=0.1)",357,20,0.946949602122016,97.11340206185567,6.078600010368973
-8,"RF(reduction=rnge, n=200, crit=entropy, depth=20)",373,4,0.9893899204244032,97.11340206185567,42.499199975281954
-8,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",367,10,0.9734748010610079,8.011782032400589,181.94919999223202
-8,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",366,11,0.9708222811671088,19.116347569955817,420.44020001776516
-8,"SVM(reduction=del, kernel=rbf, C=100.0, gamma=0.1)",341,36,0.9045092838196287,8.011782032400589,6.876900035422295
-8,"RF(reduction=del, n=200, crit=entropy, depth=20)",374,3,0.9920424403183024,8.011782032400589,59.39060001401231
-9,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",370,6,0.9840425531914894,100.0,1011.0123000340536
-9,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",370,6,0.9840425531914894,111.0718492343934,1404.2302999878302
-9,"SVM(reduction=none, kernel=rbf, C=100.0, gamma=0.1)",361,15,0.9601063829787234,100.0,16.243899997789413
-9,"RF(reduction=none, n=200, crit=entropy, depth=20)",376,0,1.0,100.0,33.684999973047525
-9,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",369,7,0.9813829787234043,10.276796230859835,116.63939995924011
-9,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",369,7,0.9813829787234043,21.348645465253238,242.86499997833744
-9,"SVM(reduction=gcnn, kernel=rbf, C=100.0, gamma=0.1)",355,21,0.9441489361702128,10.276796230859835,5.477999977301806
-9,"RF(reduction=gcnn, n=200, crit=entropy, depth=20)",376,0,1.0,10.276796230859835,42.78459999477491
-9,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",367,9,0.976063829787234,97.05535924617197,622.4896000348963
-9,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",367,9,0.976063829787234,108.12720848056536,857.9639000236057
-9,"SVM(reduction=rnge, kernel=rbf, C=100.0, gamma=0.1)",359,17,0.9547872340425532,97.05535924617197,6.294200022239238
-9,"RF(reduction=rnge, n=200, crit=entropy, depth=20)",375,1,0.9973404255319149,97.05535924617197,34.762000024784356
-9,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",369,7,0.9813829787234043,8.00942285041225,140.41599998017773
-9,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",368,8,0.9787234042553191,19.081272084805654,243.6580999637954
-9,"SVM(reduction=del, kernel=rbf, C=100.0, gamma=0.1)",349,27,0.9281914893617021,8.00942285041225,4.3404000462032855
-9,"RF(reduction=del, n=200, crit=entropy, depth=20)",376,0,1.0,8.00942285041225,33.32450002199039
+0,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",364,11,0.9706666666666667,100.0,1028.8446000195108
+0,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",364,11,0.9706666666666667,111.03915219311158,1099.109300004784
+0,"SVM(reduction=none, kernel=poly, C=100.0, gamma=1.0)",371,4,0.9893333333333333,100.0,2.1610999829135835
+0,"RF(reduction=none, n=200, crit=gini, depth=None)",374,1,0.9973333333333333,100.0,34.32780003640801
+0,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",362,13,0.9653333333333334,10.627023844568736,129.51040000189096
+0,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",365,10,0.9733333333333334,21.66617603768031,315.1826999965124
+0,"SVM(reduction=gcnn, kernel=poly, C=100.0, gamma=1.0)",358,17,0.9546666666666667,10.627023844568736,2.496000030077994
+0,"RF(reduction=gcnn, n=200, crit=gini, depth=None)",371,4,0.9893333333333333,10.627023844568736,33.45859999535605
+0,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",361,14,0.9626666666666667,97.05622608183691,750.9406000026502
+0,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",361,14,0.9626666666666667,108.09537827494849,1060.7993999728933
+0,"SVM(reduction=rnge, kernel=poly, C=100.0, gamma=1.0)",369,6,0.984,97.05622608183691,1.2594999861903489
+0,"RF(reduction=rnge, n=200, crit=gini, depth=None)",371,4,0.9893333333333333,97.05622608183691,34.2044000281021
+0,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",362,13,0.9653333333333334,7.6538121872240215,104.64900004444644
+0,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",367,8,0.9786666666666667,18.692964380335592,213.98190001491457
+0,"SVM(reduction=del, kernel=poly, C=100.0, gamma=1.0)",342,33,0.912,7.6538121872240215,1.504999992903322
+0,"RF(reduction=del, n=200, crit=gini, depth=None)",373,2,0.9946666666666667,7.6538121872240215,33.96609995979816
+1,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",368,10,0.9735449735449735,100.0,723.5459000221454
+1,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",368,10,0.9735449735449735,111.13730111962286,896.3045999989845
+1,"SVM(reduction=none, kernel=poly, C=100.0, gamma=1.0)",366,12,0.9682539682539683,100.0,1.922899973578751
+1,"RF(reduction=none, n=200, crit=gini, depth=None)",375,3,0.9920634920634921,100.0,35.894199972972274
+1,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",368,10,0.9735449735449735,10.518562168532705,117.76350002037361
+1,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",364,14,0.9629629629629629,21.65586328815557,248.60019999323413
+1,"SVM(reduction=gcnn, kernel=poly, C=100.0, gamma=1.0)",354,24,0.9365079365079365,10.518562168532705,1.5362999984063208
+1,"RF(reduction=gcnn, n=200, crit=gini, depth=None)",374,4,0.9894179894179894,10.518562168532705,33.98240002570674
+1,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",364,14,0.9629629629629629,97.25987035945786,705.6666000280529
+1,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",364,14,0.9629629629629629,108.39717147908073,1164.5921999588609
+1,"SVM(reduction=rnge, kernel=poly, C=100.0, gamma=1.0)",367,11,0.9708994708994709,97.25987035945786,2.1781999967060983
+1,"RF(reduction=rnge, n=200, crit=gini, depth=None)",373,5,0.9867724867724867,97.25987035945786,51.49420001544058
+1,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",367,11,0.9708994708994709,7.7489687684148505,108.11679996550083
+1,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",368,10,0.9735449735449735,18.886269888037713,250.66810002317652
+1,"SVM(reduction=del, kernel=poly, C=100.0, gamma=1.0)",342,36,0.9047619047619048,7.7489687684148505,1.44910003291443
+1,"RF(reduction=del, n=200, crit=gini, depth=None)",374,4,0.9894179894179894,7.7489687684148505,34.34499999275431
+2,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",366,11,0.9708222811671088,100.0,721.8737000366673
+2,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",366,11,0.9708222811671088,111.10456553755523,1049.1644000285305
+2,"SVM(reduction=none, kernel=poly, C=100.0, gamma=1.0)",369,8,0.9787798408488063,100.0,1.9747000187635422
+2,"RF(reduction=none, n=200, crit=gini, depth=None)",376,1,0.9973474801061007,100.0,32.84119995078072
+2,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",367,10,0.9734748010610079,10.36818851251841,117.77329997858033
+2,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",363,14,0.9628647214854111,21.472754050073636,230.4479000158608
+2,"SVM(reduction=gcnn, kernel=poly, C=100.0, gamma=1.0)",358,19,0.9496021220159151,10.36818851251841,1.8236000323668122
+2,"RF(reduction=gcnn, n=200, crit=gini, depth=None)",376,1,0.9973474801061007,10.36818851251841,34.21459998935461
+2,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",366,11,0.9708222811671088,97.26067746686303,673.122100008186
+2,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",366,11,0.9708222811671088,108.36524300441826,941.3919000071473
+2,"SVM(reduction=rnge, kernel=poly, C=100.0, gamma=1.0)",370,7,0.9814323607427056,97.26067746686303,1.3061999925412238
+2,"RF(reduction=rnge, n=200, crit=gini, depth=None)",373,4,0.9893899204244032,97.26067746686303,32.43809996638447
+2,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",366,11,0.9708222811671088,7.92341678939617,127.54220003262162
+2,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",368,9,0.9761273209549072,19.0279823269514,248.58840001979843
+2,"SVM(reduction=del, kernel=poly, C=100.0, gamma=1.0)",346,31,0.9177718832891246,7.92341678939617,1.5027000335976481
+2,"RF(reduction=del, n=200, crit=gini, depth=None)",375,2,0.9946949602122016,7.92341678939617,34.9108999944292
+3,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",358,19,0.9496021220159151,100.0,804.922399984207
+3,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",358,19,0.9496021220159151,111.10456553755523,1024.473300029058
+3,"SVM(reduction=none, kernel=poly, C=100.0, gamma=1.0)",368,9,0.9761273209549072,100.0,2.186400000937283
+3,"RF(reduction=none, n=200, crit=gini, depth=None)",376,1,0.9973474801061007,100.0,43.43489999882877
+3,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",362,15,0.9602122015915119,10.397643593519883,128.61289997817948
+3,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",363,14,0.9628647214854111,21.502209131075112,232.62300004716963
+3,"SVM(reduction=gcnn, kernel=poly, C=100.0, gamma=1.0)",349,28,0.9257294429708223,10.397643593519883,1.5496999840252101
+3,"RF(reduction=gcnn, n=200, crit=gini, depth=None)",375,2,0.9946949602122016,10.397643593519883,32.487799995578825
+3,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",356,21,0.9442970822281167,97.49631811487481,798.5658000106923
+3,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",356,21,0.9442970822281167,108.60088365243004,1097.730599984061
+3,"SVM(reduction=rnge, kernel=poly, C=100.0, gamma=1.0)",364,13,0.9655172413793104,97.49631811487481,1.7460000235587358
+3,"RF(reduction=rnge, n=200, crit=gini, depth=None)",370,7,0.9814323607427056,97.49631811487481,37.60280000278726
+3,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",363,14,0.9628647214854111,7.039764359351988,105.01060000387952
+3,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",362,15,0.9602122015915119,18.144329896907216,232.42789995856583
+3,"SVM(reduction=del, kernel=poly, C=100.0, gamma=1.0)",349,28,0.9257294429708223,7.039764359351988,1.3778000138700008
+3,"RF(reduction=del, n=200, crit=gini, depth=None)",375,2,0.9946949602122016,7.039764359351988,34.00260000489652
+4,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",365,13,0.9656084656084656,100.0,773.8359000068158
+4,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",365,13,0.9656084656084656,111.13730111962286,923.4714999911375
+4,"SVM(reduction=none, kernel=poly, C=100.0, gamma=1.0)",366,12,0.9682539682539683,100.0,1.937700028065592
+4,"RF(reduction=none, n=200, crit=gini, depth=None)",377,1,0.9973544973544973,100.0,34.70239997841418
+4,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",365,13,0.9656084656084656,10.13553329404832,116.62809998961166
+4,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",368,10,0.9735449735449735,21.272834413671184,242.54439998185262
+4,"SVM(reduction=gcnn, kernel=poly, C=100.0, gamma=1.0)",355,23,0.9391534391534392,10.13553329404832,1.8275999464094639
+4,"RF(reduction=gcnn, n=200, crit=gini, depth=None)",376,2,0.9947089947089947,10.13553329404832,37.320799950975925
+4,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",365,13,0.9656084656084656,97.1714790807307,630.8319000527263
+4,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",365,13,0.9656084656084656,108.30878020035357,883.3879000158049
+4,"SVM(reduction=rnge, kernel=poly, C=100.0, gamma=1.0)",368,10,0.9735449735449735,97.1714790807307,1.3055000454187393
+4,"RF(reduction=rnge, n=200, crit=gini, depth=None)",375,3,0.9920634920634921,97.1714790807307,33.76169997500256
+4,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",362,16,0.9576719576719577,7.483794932233353,171.76149995066226
+4,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",365,13,0.9656084656084656,18.621096051856217,350.795799982734
+4,"SVM(reduction=del, kernel=poly, C=100.0, gamma=1.0)",339,39,0.8968253968253969,7.483794932233353,3.1006999779492617
+4,"RF(reduction=del, n=200, crit=gini, depth=None)",376,2,0.9947089947089947,7.483794932233353,56.30579998251051
+5,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",362,16,0.9576719576719577,100.0,819.5955000119284
+5,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",361,17,0.955026455026455,111.13730111962286,1151.1627999716438
+5,"SVM(reduction=none, kernel=poly, C=100.0, gamma=1.0)",367,11,0.9708994708994709,100.0,2.84620001912117
+5,"RF(reduction=none, n=200, crit=gini, depth=None)",376,2,0.9947089947089947,100.0,64.67069999780506
+5,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",366,12,0.9682539682539683,10.076605774896876,167.20610001357272
+5,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",366,12,0.9682539682539683,21.21390689451974,376.5275999903679
+5,"SVM(reduction=gcnn, kernel=poly, C=100.0, gamma=1.0)",344,34,0.91005291005291,10.076605774896876,2.4972999817691743
+5,"RF(reduction=gcnn, n=200, crit=gini, depth=None)",374,4,0.9894179894179894,10.076605774896876,55.27869996149093
+5,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",362,16,0.9576719576719577,97.46611667648793,759.8871000227518
+5,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",361,17,0.955026455026455,108.60341779611078,1148.851800011471
+5,"SVM(reduction=rnge, kernel=poly, C=100.0, gamma=1.0)",365,13,0.9656084656084656,97.46611667648793,1.9833000260405242
+5,"RF(reduction=rnge, n=200, crit=gini, depth=None)",374,4,0.9894179894179894,97.46611667648793,61.75749999238178
+5,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",366,12,0.9682539682539683,7.454331172657631,157.82770002260804
+5,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",366,12,0.9682539682539683,18.591632292280494,360.0696999928914
+5,"SVM(reduction=del, kernel=poly, C=100.0, gamma=1.0)",323,55,0.8544973544973545,7.454331172657631,2.1237999899312854
+5,"RF(reduction=del, n=200, crit=gini, depth=None)",372,6,0.9841269841269841,7.454331172657631,56.463300017639995
+6,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",362,16,0.9576719576719577,100.0,813.632300007157
+6,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",362,16,0.9576719576719577,111.13730111962286,1200.8514999761246
+6,"SVM(reduction=none, kernel=poly, C=100.0, gamma=1.0)",370,8,0.9788359788359788,100.0,2.9568999889306724
+6,"RF(reduction=none, n=200, crit=gini, depth=None)",376,2,0.9947089947089947,100.0,54.35859999852255
+6,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",368,10,0.9735449735449735,9.899823217442545,163.4601999539882
+6,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",366,12,0.9682539682539683,21.03712433706541,354.2790999636054
+6,"SVM(reduction=gcnn, kernel=poly, C=100.0, gamma=1.0)",342,36,0.9047619047619048,9.899823217442545,2.3447999847121537
+6,"RF(reduction=gcnn, n=200, crit=gini, depth=None)",376,2,0.9947089947089947,9.899823217442545,53.39199997251853
+6,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",360,18,0.9523809523809523,97.40718915733648,825.8979000383988
+6,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",360,18,0.9523809523809523,108.54449027695934,1185.0598999881186
+6,"SVM(reduction=rnge, kernel=poly, C=100.0, gamma=1.0)",364,14,0.9629629629629629,97.40718915733648,2.67880002502352
+6,"RF(reduction=rnge, n=200, crit=gini, depth=None)",374,4,0.9894179894179894,97.40718915733648,60.13270001858473
+6,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",364,14,0.9629629629629629,7.542722451384797,160.63340002438053
+6,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",365,13,0.9656084656084656,18.680023571007663,348.3019999694079
+6,"SVM(reduction=del, kernel=poly, C=100.0, gamma=1.0)",346,32,0.9153439153439153,7.542722451384797,2.1025999449193478
+6,"RF(reduction=del, n=200, crit=gini, depth=None)",375,3,0.9920634920634921,7.542722451384797,55.29940000269562
+7,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",361,17,0.955026455026455,100.0,788.9409000054002
+7,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",363,15,0.9603174603174603,111.13730111962286,1219.571299967356
+7,"SVM(reduction=none, kernel=poly, C=100.0, gamma=1.0)",360,18,0.9523809523809523,100.0,2.9772999696433544
+7,"RF(reduction=none, n=200, crit=gini, depth=None)",374,4,0.9894179894179894,100.0,58.08490002527833
+7,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",362,16,0.9576719576719577,9.752504419563936,169.53190002823249
+7,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",363,15,0.9603174603174603,20.889805539186803,358.74880000483245
+7,"SVM(reduction=gcnn, kernel=poly, C=100.0, gamma=1.0)",355,23,0.9391534391534392,9.752504419563936,2.7473000227473676
+7,"RF(reduction=gcnn, n=200, crit=gini, depth=None)",375,3,0.9920634920634921,9.752504419563936,54.8797000083141
+7,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",360,18,0.9523809523809523,97.34826163818504,799.0707000135444
+7,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",360,18,0.9523809523809523,108.4855627578079,1185.6242999783717
+7,"SVM(reduction=rnge, kernel=poly, C=100.0, gamma=1.0)",359,19,0.9497354497354498,97.34826163818504,2.023999986704439
+7,"RF(reduction=rnge, n=200, crit=gini, depth=None)",368,10,0.9735449735449735,97.34826163818504,54.25149999791756
+7,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",360,18,0.9523809523809523,7.454331172657631,190.4167999746278
+7,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",362,16,0.9576719576719577,18.591632292280494,387.5285999965854
+7,"SVM(reduction=del, kernel=poly, C=100.0, gamma=1.0)",348,30,0.9206349206349206,7.454331172657631,3.0540000298060477
+7,"RF(reduction=del, n=200, crit=gini, depth=None)",372,6,0.9841269841269841,7.454331172657631,65.32049999805167
+8,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",368,9,0.9761273209549072,100.0,1068.1603000266477
+8,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",368,9,0.9761273209549072,111.10456553755523,1332.4401000281796
+8,"SVM(reduction=none, kernel=poly, C=100.0, gamma=1.0)",370,7,0.9814323607427056,100.0,3.0491999932564795
+8,"RF(reduction=none, n=200, crit=gini, depth=None)",376,1,0.9973474801061007,100.0,55.793500039726496
+8,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",364,13,0.9655172413793104,10.721649484536082,176.5832999954
+8,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",363,14,0.9628647214854111,21.82621502209131,381.0333000146784
+8,"SVM(reduction=gcnn, kernel=poly, C=100.0, gamma=1.0)",362,15,0.9602122015915119,10.721649484536082,2.4411000194959342
+8,"RF(reduction=gcnn, n=200, crit=gini, depth=None)",374,3,0.9920424403183024,10.721649484536082,54.84660004731268
+8,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",363,14,0.9628647214854111,97.11340206185567,963.0842999904417
+8,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",364,13,0.9655172413793104,108.2179675994109,963.7441000086255
+8,"SVM(reduction=rnge, kernel=poly, C=100.0, gamma=1.0)",370,7,0.9814323607427056,97.11340206185567,1.5813999925740063
+8,"RF(reduction=rnge, n=200, crit=gini, depth=None)",374,3,0.9920424403183024,97.11340206185567,33.31049997359514
+8,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",367,10,0.9734748010610079,8.011782032400589,117.0463000307791
+8,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",366,11,0.9708222811671088,19.116347569955817,221.9844000064768
+8,"SVM(reduction=del, kernel=poly, C=100.0, gamma=1.0)",356,21,0.9442970822281167,8.011782032400589,2.0102999988012016
+8,"RF(reduction=del, n=200, crit=gini, depth=None)",375,2,0.9946949602122016,8.011782032400589,32.96119999140501
+9,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",370,6,0.9840425531914894,100.0,659.544599999208
+9,"KNN(reduction=none, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",370,6,0.9840425531914894,111.0718492343934,918.649600003846
+9,"SVM(reduction=none, kernel=poly, C=100.0, gamma=1.0)",371,5,0.9867021276595744,100.0,2.056900004390627
+9,"RF(reduction=none, n=200, crit=gini, depth=None)",376,0,1.0,100.0,32.70540002267808
+9,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",369,7,0.9813829787234043,10.276796230859835,116.72570003429428
+9,"KNN(reduction=gcnn, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",369,7,0.9813829787234043,21.348645465253238,230.8367000077851
+9,"SVM(reduction=gcnn, kernel=poly, C=100.0, gamma=1.0)",348,28,0.925531914893617,10.276796230859835,1.6770000220276415
+9,"RF(reduction=gcnn, n=200, crit=gini, depth=None)",376,0,1.0,10.276796230859835,32.59519999846816
+9,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",367,9,0.976063829787234,97.05535924617197,695.5675999633968
+9,"KNN(reduction=rnge, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",367,9,0.976063829787234,108.12720848056536,932.8053999925032
+9,"SVM(reduction=rnge, kernel=poly, C=100.0, gamma=1.0)",370,6,0.9840425531914894,97.05535924617197,1.2811999768018723
+9,"RF(reduction=rnge, n=200, crit=gini, depth=None)",375,1,0.9973404255319149,97.05535924617197,32.58389997063205
+9,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=never_retain)",369,7,0.9813829787234043,8.00942285041225,116.24559998745099
+9,"KNN(reduction=del, k=5, metric=canberra, voting=inverse_distance, retention=always_retain)",368,8,0.9787234042553191,19.081272084805654,232.78159997425973
+9,"SVM(reduction=del, kernel=poly, C=100.0, gamma=1.0)",331,45,0.8803191489361702,8.00942285041225,1.4211999950930476
+9,"RF(reduction=del, n=200, crit=gini, depth=None)",376,0,1.0,8.00942285041225,33.41739997267723

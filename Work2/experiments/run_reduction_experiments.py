@@ -45,7 +45,7 @@ BEST_CONFIGS = {
         },
         "knn_best_static": {
             "k": 7,
-            "distance_metric": "canberra",
+            "distance_metric": "manhattan",  # ties Canberra on accuracy, wins on prediction time
             "voting_scheme": "inverse_distance",
             "retention_policy": "never_retain",
         },
@@ -75,15 +75,15 @@ BEST_CONFIGS = {
             "retention_policy": "never_retain",
         },
         "svm": {
-            "kernel": "rbf",
+            "kernel": "poly",
             "C": 100.0,
-            "gamma": 0.1,
-            "degree": 3,
+            "gamma": 1.0,
+            "degree": 2,
         },
         "rf": {
             "n_estimators": 200,
-            "criterion": "entropy",
-            "max_depth": 20,
+            "criterion": "gini",
+            "max_depth": None,
         },
     },
 }
@@ -149,14 +149,19 @@ def run_reduction_experiments_for_dataset(dataset_name="soybean", n_folds=10, ou
                 "peak_memory_mb": res_knn_nr["peak_memory_mb"],
             })
 
-            # Subsample for SVM, RF, and kNN (AR) when reduction does not depend on k/voting
+            # Subsample for SVM, RF, and kNN (AR) when the AR reduction would be identical
             X_tr_red = X_tr_arr[kept]
             y_tr_red = y_tr_arr[kept]
 
             # 2. Best kNN (Dynamic AR policy on reduced initial set)
-            if method == "del" and (
-                knn_overall_cfg["k"] != knn_static_cfg["k"]
-                or knn_overall_cfg["voting_scheme"] != knn_static_cfg["voting_scheme"]
+            # Reduce again when the AR configuration changes what the reduction depends on
+            # (the distance metric for every method; also k and voting for DEL)
+            if method != "none" and (
+                knn_overall_cfg["distance_metric"] != knn_static_cfg["distance_metric"]
+                or (method == "del" and (
+                    knn_overall_cfg["k"] != knn_static_cfg["k"]
+                    or knn_overall_cfg["voting_scheme"] != knn_static_cfg["voting_scheme"]
+                ))
             ):
                 res_knn_ar = reduction_kNNAlgorithm(
                     X_tr_arr,
