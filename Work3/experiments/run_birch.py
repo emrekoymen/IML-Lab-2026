@@ -5,10 +5,10 @@ Runs for each dataset (glass, hypothyroid, soybean):
   1. Full threshold × branching_factor × n_clusters parameter sweep via runner
   2. Post-sweep plots: threshold×n_clusters heatmaps, branching_factor sensitivity
 
-Outputs → results/plots/birch/
-           results/runs/birch_<dataset>_runs.csv
-           results/summary/birch_<dataset>_summary.csv
-           results/predictions/birch_<dataset>_best_labels.npy
+Outputs → results/birch/<dataset>/runs.csv
+           results/birch/<dataset>/summary.csv
+           results/birch/<dataset>/best_labels.npy
+           results/birch/<dataset>/plots/
 
 Notes
 -----
@@ -32,8 +32,13 @@ from core.runner import run_experiment_suite
 from core.plotting import plot_metric_curve, plot_param_heatmap
 
 DATASETS = ["glass", "hypothyroid", "soybean"]
-PLOT_DIR = Path(__file__).resolve().parent.parent / "results" / "plots" / "birch"
-PLOT_DIR.mkdir(parents=True, exist_ok=True)
+RESULTS_DIR = Path(__file__).resolve().parent.parent / "results" / "birch"
+
+
+def _plot_dir(dataset: str) -> Path:
+    d = RESULTS_DIR / dataset / "plots"
+    d.mkdir(parents=True, exist_ok=True)
+    return d
 
 # ---------------------------------------------------------------------------
 # Parameter grids
@@ -85,14 +90,14 @@ def build_main_grid(dataset: str) -> list[dict]:
 def build_branching_grid(dataset: str) -> list[dict]:
     """
     Secondary grid: branching_factor sweep at fixed threshold and n_clusters.
-    Used to measure runtime and quality impact of branching_factor.
+    Skips bf=50 since build_main_grid already covers it.
     """
-    # Use a mid-range threshold and the true class count as n_clusters
     fixed_threshold = {"glass": 0.5, "hypothyroid": 1.5, "soybean": 4.0}[dataset]
     true_k = {"glass": 6, "hypothyroid": 4, "soybean": 19}[dataset]
     return [
         {"threshold": fixed_threshold, "branching_factor": bf, "n_clusters": true_k}
         for bf in BRANCHING_FACTORS
+        if bf != 50
     ]
 
 
@@ -108,13 +113,11 @@ def plot_sweep_results(dataset: str) -> None:
     """Generate heatmaps and sensitivity plots from the saved summary CSV."""
     import pandas as pd
 
-    summary_path = (
-        Path(__file__).resolve().parent.parent
-        / "results" / "summary" / f"birch_{dataset}_summary.csv"
-    )
+    summary_path = RESULTS_DIR / dataset / "summary.csv"
     if not summary_path.exists():
         return
 
+    plot_dir = _plot_dir(dataset)
     df = pd.read_csv(summary_path)
     df["params"] = df["params_json"].map(json.loads)
     df["threshold"] = df["params"].map(lambda p: p["threshold"])
@@ -124,7 +127,7 @@ def plot_sweep_results(dataset: str) -> None:
     # 1. threshold × n_clusters heatmaps for key metrics (branching_factor=50)
     sub = df[df["branching_factor"] == 50].copy()
     for metric in ["silhouette_mean", "davies_bouldin_mean", "ari_mean", "n_clusters_found_mean"]:
-        save_path = PLOT_DIR / f"{dataset}_thresh_nclusters_{metric}.png"
+        save_path = plot_dir / f"thresh_nclusters_{metric}.png"
         plot_param_heatmap(
             df=sub.assign(
                 threshold=sub["threshold"].astype(str),
@@ -137,11 +140,13 @@ def plot_sweep_results(dataset: str) -> None:
             save_path=save_path,
         )
 
-    # 2. branching_factor sensitivity
-    bf_sub = df[df["n_clusters_param"] != "None"].copy()
+    # 2. branching_factor sensitivity (fixed threshold & true_k)
+    fixed_threshold = {"glass": 0.5, "hypothyroid": 1.5, "soybean": 4.0}[dataset]
+    true_k = str({"glass": 6, "hypothyroid": 4, "soybean": 19}[dataset])
+    bf_sub = df[(df["threshold"] == fixed_threshold) & (df["n_clusters_param"] == true_k)].copy()
     if not bf_sub.empty:
         bf_sub = bf_sub.sort_values("branching_factor")
-        save_path = PLOT_DIR / f"{dataset}_branching_factor_sensitivity.png"
+        save_path = plot_dir / "branching_factor_sensitivity.png"
         plot_metric_curve(
             df=bf_sub,
             x_col="branching_factor",
@@ -152,25 +157,31 @@ def plot_sweep_results(dataset: str) -> None:
         )
 
     # 3. n_subclusters diagnostic (shows CF-tree collapse)
-    if "extra_json" in df.columns:
-        import ast
-        df["n_subclusters"] = df["extra_json"].map(
-            lambda s: json.loads(s).get("n_subclusters", None)
-        )
-        sub2 = df[df["branching_factor"] == 50].dropna(subset=["n_subclusters"])
-        if not sub2.empty:
-            save_path = PLOT_DIR / f"{dataset}_nsubclusters_heatmap.png"
-            plot_param_heatmap(
-                df=sub2.assign(
-                    threshold=sub2["threshold"].astype(str),
-                    n_clusters_param=sub2["n_clusters_param"],
-                ),
-                row_col="n_clusters_param",
-                col_col="threshold",
-                value_col="n_subclusters",
-                title=f"BIRCH n_subclusters (CF-tree) — {dataset}",
-                save_path=save_path,
+    runs_path = RESULTS_DIR / dataset / "runs.csv"
+    if runs_path.exists():
+        runs_df = pd.read_csv(runs_path)
+        if "extra_json" in runs_df.columns:
+            runs_df["n_subclusters"] = runs_df["extra_json"].map(
+                lambda s: json.loads(s).get("n_subclusters", None)
             )
+            runs_df["params"] = runs_df["params_json"].map(json.loads)
+            runs_df["threshold"] = runs_df["params"].map(lambda p: p["threshold"])
+            runs_df["branching_factor"] = runs_df["params"].map(lambda p: p["branching_factor"])
+            runs_df["n_clusters_param"] = runs_df["params"].map(lambda p: str(p["n_clusters"]))
+            sub2 = runs_df[runs_df["branching_factor"] == 50].dropna(subset=["n_subclusters"])
+            if not sub2.empty:
+                save_path = plot_dir / "nsubclusters_heatmap.png"
+                plot_param_heatmap(
+                    df=sub2.assign(
+                        threshold=sub2["threshold"].astype(str),
+                        n_clusters_param=sub2["n_clusters_param"],
+                    ),
+                    row_col="n_clusters_param",
+                    col_col="threshold",
+                    value_col="n_subclusters",
+                    title=f"BIRCH n_subclusters (CF-tree) — {dataset}",
+                    save_path=save_path,
+                )
 
     print(f"  [plots] Sweep plots saved for {dataset}")
 
@@ -188,30 +199,19 @@ if __name__ == "__main__":
         X, y_true, meta = load_preprocessed(dataset)
         print(f"  Shape: {X.shape}  |  Classes: {meta['n_classes']}")
 
-        # Stage 1: threshold × n_clusters sweep (branching_factor=50)
-        main_grid = build_main_grid(dataset)
-        print(f"\n[Stage 1] Main sweep: {len(main_grid)} configurations...")
+        # Combine main grid + branching_factor sweep into one suite so summary.csv has all configs
+        full_grid = build_main_grid(dataset) + build_branching_grid(dataset)
+        print(f"\n[Stage 1] Running sweep: {len(full_grid)} configurations...")
         run_experiment_suite(
             algo_name="birch",
             factory_fn=make_model,
             dataset_name=dataset,
-            param_grid=main_grid,
-            seeds=SEEDS,
-        )
-
-        # Stage 2: branching_factor sweep (appends to same CSVs)
-        bf_grid = build_branching_grid(dataset)
-        print(f"\n[Stage 2] Branching factor sweep: {len(bf_grid)} configurations...")
-        run_experiment_suite(
-            algo_name="birch",
-            factory_fn=make_model,
-            dataset_name=dataset,
-            param_grid=bf_grid,
+            param_grid=full_grid,
             seeds=SEEDS,
         )
 
         # Post-sweep plots
-        print("\n[Stage 3] Generating plots...")
+        print("\n[Stage 2] Generating plots...")
         plot_sweep_results(dataset)
 
     print("\nDone. Results in results/")

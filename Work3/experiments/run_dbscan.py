@@ -6,10 +6,10 @@ Runs three stages for each dataset (glass, hypothyroid, soybean):
   2. Full eps × min_samples × metric parameter sweep via runner
   3. Algorithm speed benchmark (auto / ball_tree / kd_tree / brute)
 
-Outputs → results/plots/dbscan/
-           results/runs/dbscan_<dataset>_runs.csv
-           results/summary/dbscan_<dataset>_summary.csv
-           results/predictions/dbscan_<dataset>_best_labels.npy
+Outputs → results/dbscan/<dataset>/runs.csv
+           results/dbscan/<dataset>/summary.csv
+           results/dbscan/<dataset>/best_labels.npy
+           results/dbscan/<dataset>/plots/
 """
 
 import sys
@@ -26,8 +26,13 @@ from core.runner import run_experiment_suite
 from core.plotting import plot_k_distance, plot_metric_curve, plot_param_heatmap, plot_bar
 
 DATASETS = ["glass", "hypothyroid", "soybean"]
-PLOT_DIR = Path(__file__).resolve().parent.parent / "results" / "plots" / "dbscan"
-PLOT_DIR.mkdir(parents=True, exist_ok=True)
+RESULTS_DIR = Path(__file__).resolve().parent.parent / "results" / "dbscan"
+
+
+def _plot_dir(dataset: str) -> Path:
+    d = RESULTS_DIR / dataset / "plots"
+    d.mkdir(parents=True, exist_ok=True)
+    return d
 
 # ---------------------------------------------------------------------------
 # Parameter grids — dataset-specific eps ranges calibrated to data scale
@@ -71,7 +76,7 @@ def run_k_distance(dataset: str, X: np.ndarray) -> None:
             distances, _ = nn.kneighbors(X)
             kth_dist = distances[:, -1]  # distance to the k-th neighbour
 
-            save_path = PLOT_DIR / f"{dataset}_kdist_k{k}_{metric}.png"
+            save_path = _plot_dir(dataset) / f"kdist_k{k}_{metric}.png"
             plot_k_distance(kth_dist, k=k, dataset=dataset, metric=metric,
                             save_path=save_path)
             print(f"  [k-dist] {dataset} k={k} {metric}: "
@@ -153,7 +158,7 @@ def run_algorithm_benchmark(dataset: str, X: np.ndarray) -> None:
         except Exception as e:
             print(f"  [bench] {dataset} {name}: SKIPPED ({e})")
 
-    save_path = PLOT_DIR / f"{dataset}_algorithm_runtime.png"
+    save_path = _plot_dir(dataset) / "algorithm_runtime.png"
     plot_bar(
         labels=algo_names,
         values=runtimes,
@@ -172,13 +177,11 @@ def run_algorithm_benchmark(dataset: str, X: np.ndarray) -> None:
 def plot_sweep_results(dataset: str) -> None:
     """Generate sensitivity plots from the saved summary CSV."""
     import pandas as pd
-    summary_path = (
-        Path(__file__).resolve().parent.parent
-        / "results" / "summary" / f"dbscan_{dataset}_summary.csv"
-    )
+    summary_path = RESULTS_DIR / dataset / "summary.csv"
     if not summary_path.exists():
         return
 
+    plot_dir = _plot_dir(dataset)
     import json
     df = pd.read_csv(summary_path)
     df["params"] = df["params_json"].map(json.loads)
@@ -197,7 +200,7 @@ def plot_sweep_results(dataset: str) -> None:
                 continue
 
             # eps vs silhouette, noise_pct, n_clusters_found, ari
-            save_path = PLOT_DIR / f"{dataset}_{metric}_ms{ms}_sensitivity.png"
+            save_path = plot_dir / f"{metric}_ms{ms}_sensitivity.png"
             plot_metric_curve(
                 df=msub,
                 x_col="eps",
@@ -208,7 +211,7 @@ def plot_sweep_results(dataset: str) -> None:
             )
 
         # Heatmap: eps × min_samples for silhouette (per metric)
-        save_path = PLOT_DIR / f"{dataset}_{metric}_sil_heatmap.png"
+        save_path = plot_dir / f"{metric}_sil_heatmap.png"
         plot_param_heatmap(
             df=sub.assign(eps=sub["eps"].astype(str), ms=sub["min_samples"].astype(str)),
             row_col="ms",

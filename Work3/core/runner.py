@@ -27,6 +27,13 @@ ALL_METRICS = [
 ]
 
 
+def _algo_dataset_dir(algo_name: str, dataset_name: str) -> Path:
+    """Base output dir for one algorithm + dataset: results/<algo>/<dataset>/"""
+    d = RESULTS_DIR / algo_name / dataset_name
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
 def run_experiment_suite(
     algo_name: str,
     factory_fn,
@@ -47,17 +54,17 @@ def run_experiment_suite(
 
     Returns
     -------
-    summary_df : aggregated summary DataFrame (also saved to results/summary/)
+    summary_df : aggregated summary DataFrame (also saved to results/<algo>/<dataset>/summary.csv)
     """
     X, y_true, meta = load_preprocessed(dataset_name)
     seed_list = seeds if seeds is not None else [None]
 
-    runs_dir = RESULTS_DIR / "runs"
-    summary_dir = RESULTS_DIR / "summary"
-    pred_dir = RESULTS_DIR / "predictions"
-    plot_dir = RESULTS_DIR / "plots" / algo_name
-    for d in (runs_dir, summary_dir, pred_dir, plot_dir):
-        d.mkdir(parents=True, exist_ok=True)
+    out_dir = _algo_dataset_dir(algo_name, dataset_name)
+    plot_dir = out_dir / "plots"
+    plot_dir.mkdir(parents=True, exist_ok=True)
+
+    runs_csv = out_dir / "runs.csv"
+    runs_csv.unlink(missing_ok=True)
 
     run_rows = []
     for config_id, params in enumerate(param_grid):
@@ -68,11 +75,11 @@ def run_experiment_suite(
                 seed, factory_fn, X, y_true,
             )
             run_rows.append(row)
-            _append_csv(runs_dir / f"{algo_name}_{dataset_name}_runs.csv", row)
+            _append_csv(runs_csv, row)
 
     runs_df = pd.DataFrame(run_rows)
     summary_df = _aggregate(runs_df, algo_name, dataset_name)
-    summary_df.to_csv(summary_dir / f"{algo_name}_{dataset_name}_summary.csv", index=False)
+    summary_df.to_csv(out_dir / "summary.csv", index=False)
 
     # Save best config artifacts
     best = summary_df[summary_df["is_best"]].iloc[0]
@@ -80,12 +87,12 @@ def run_experiment_suite(
     best_model = factory_fn(best_params, seeds[0] if seeds else None)
     best_labels = best_model.fit_predict(X)
 
-    np.save(pred_dir / f"{algo_name}_{dataset_name}_best_labels.npy", best_labels)
+    np.save(out_dir / "best_labels.npy", best_labels)
     cm = build_confusion_matrix(y_true, best_labels)
     plot_confusion_matrix(
         cm,
         title=f"{algo_name.upper()} — {dataset_name} (best config)",
-        save_path=plot_dir / f"{dataset_name}_cm.png",
+        save_path=plot_dir / "cm.png",
     )
     print(f"[{algo_name}/{dataset_name}] Done. Best config_id={best['config_id']}  "
           f"silhouette={best['silhouette_mean']:.3f}  ari={best['ari_mean']:.3f}")
