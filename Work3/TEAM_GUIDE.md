@@ -28,10 +28,12 @@ Work3/
 ├── algorithms/     # Algorithm implementations — one file per algorithm
 ├── experiments/    # Parameter-sweep scripts — one script per algorithm
 ├── results/
-│   ├── runs/       # Raw CSV per run (config × seed)
-│   ├── summary/    # Aggregated CSV: 1 row per config with mean & std, plus is_best flag
-│   ├── predictions/# Best cluster labels (.npy) for Person 4
-│   ├── plots/      # PNG figures per algorithm/dataset
+│   ├── dbscan/     # One folder per algorithm → glass/, hypothyroid/, soybean/
+│   │   └── <dataset>/
+│   │       ├── runs.csv        # Raw CSV per run (config × seed)
+│   │       ├── summary.csv     # Aggregated CSV: 1 row per config (mean ± std, is_best)
+│   │       ├── best_labels.npy # Best cluster labels for Person 4
+│   │       └── plots/          # PNG figures (including cm.png)
 │   └── comparison/ # Cross-algorithm tables & plots (Person 4)
 ├── main.py         # Single-config CLI for reproduction (not full sweeps — see §6)
 ├── README.md
@@ -133,12 +135,12 @@ for dataset in ["glass", "hypothyroid", "soybean"]:
 
 | File | Content |
 |---|---|
-| `results/runs/<algo>_<dataset>_runs.csv` | One row per `(config, seed)` with all metrics, runtime, memory, `extra_info_` |
-| `results/summary/<algo>_<dataset>_summary.csv` | One row per config: mean & std across seeds + `is_best` flag |
-| `results/predictions/<algo>_<dataset>_best_labels.npy` | Cluster labels for the best config (used by Person 4) |
-| `results/plots/<algo>/<dataset>_cm.png` | Confusion matrix of the best config vs `y_true` |
+| `results/<algo>/<dataset>/runs.csv` | One row per `(config, seed)` with all metrics, runtime, memory, `extra_info_` |
+| `results/<algo>/<dataset>/summary.csv` | One row per config: mean & std across seeds + `is_best` flag |
+| `results/<algo>/<dataset>/best_labels.npy` | Cluster labels for the best config (used by Person 4) |
+| `results/<algo>/<dataset>/plots/cm.png` | Confusion matrix of the best config vs `y_true` |
 
-You only need to add **algorithm-specific plots** (elbow curve, FCM objective vs $C$, CLARANS cost history, G-Means $k$ estimation) inside your own `run_<algo>.py` using helpers from `core/plotting.py`.
+You only need to add **algorithm-specific plots** (elbow curve, FCM objective vs $C$, CLARANS cost history, G-Means $k$ estimation) inside your own `run_<algo>.py` using helpers from `core/plotting.py` (save them under `results/<algo>/<dataset>/plots/`).
 
 ### Reading `params_json` from summary CSVs
 
@@ -148,7 +150,7 @@ The `params_json` column stores hyperparameters as a JSON string. To parse them 
 import json
 import pandas as pd
 
-df = pd.read_csv("results/summary/clarans_glass_summary.csv")
+df = pd.read_csv("results/clarans/glass/summary.csv")
 df["params"] = df["params_json"].map(json.loads)
 # Now df["params"] is a column of dicts, e.g. {"n_clusters": 4, "max_neighbour": 10}
 ```
@@ -191,17 +193,17 @@ All metrics computed by `core/metrics.py`. Internal metrics use **only `X` and `
 - Visualise in 2D and 3D, coloured by `y_true`.
 
 ### Clustering on PCA-reduced data (Section 1.2 Tasks 3–4)
-- Read `results/summary/` CSVs from K-Means (`kmeans`), IKM (`ikmeans`), and CLARANS (`clarans`).
+- Read `results/<algo>/<dataset>/summary.csv` from K-Means (`kmeans`), IKM (`ikmeans`), and CLARANS (`clarans`).
 - Filter `is_best == True` per dataset, compare their `ari_mean` and `silhouette_mean`, and **explicitly state** which algorithm is selected as best and why.
-- Import that class (e.g., `from algorithms.ikmeans import GMeans`), call `fit_predict(X_pca)` on the PCA-reduced data, evaluate with `core/metrics.evaluate_clustering()`, and compare against the full-`X` best labels in `results/predictions/<algo>_<dataset>_best_labels.npy`.
+- Import that class (e.g., `from algorithms.ikmeans import GMeans`), call `fit_predict(X_pca)` on the PCA-reduced data, evaluate with `core/metrics.evaluate_clustering()`, and compare against the full-`X` best labels in `results/<best_algo>/<dataset>/best_labels.npy`.
 - Generate 2D/3D PCA scatter plots with cluster colour overlays. Repeat on Isomap 2D embedding.
 
 ### Cross-algorithm comparison (`experiments/compare_all.py`)
 ```python
-import glob, json
+import glob
 import pandas as pd
 
-files = glob.glob("results/summary/*_summary.csv")
+files = glob.glob("results/*/*/summary.csv")
 df = pd.concat([pd.read_csv(f) for f in files])
 best = df[df["is_best"] == True]
 # best now has one row per (algorithm, dataset) — build comparison tables & bar charts

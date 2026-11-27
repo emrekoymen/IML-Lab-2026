@@ -108,7 +108,7 @@ def plot_param_heatmap(
     save_path: Path,
 ) -> None:
     """Heatmap showing a metric across two hyperparameters."""
-    pivot = df.pivot(index=row_col, columns=col_col, values=value_col)
+    pivot = df.pivot_table(index=row_col, columns=col_col, values=value_col, aggfunc="mean")
     fig, ax = plt.subplots(figsize=(max(5, pivot.shape[1] * 0.8), max(4, pivot.shape[0] * 0.6)))
     im = ax.imshow(pivot.values.astype(float), aspect="auto", cmap="viridis")
     ax.set_xticks(range(pivot.shape[1]))
